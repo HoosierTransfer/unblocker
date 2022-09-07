@@ -9,6 +9,7 @@ const serve = new nodeStatic.Server('static/');
 const fakeServe = new nodeStatic.Server('BlacklistServe/');
 
 const server = http.createServer();
+console.log("working");
 
 server.on('request', (request, response) => {
     const ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
