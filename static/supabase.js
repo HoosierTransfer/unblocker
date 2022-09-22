@@ -24,7 +24,6 @@ async function signInWithGithub() {
 }
 
 async function Signup() {
-    document.cookie = "key=;" + document.getElementById("key").value + "path=/";
     const { data, error } = await supabase
   .from('Users')
   .insert([{ key: document.getElementById("key").value, uuid: uuid1 }])
