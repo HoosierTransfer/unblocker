@@ -13,7 +13,7 @@ async function signInWithGithub() {
 }
 
 async function Signup() {
-  document.cookie = `name=${encodeURIComponent('key=')}; path=/; secure`
+  document.cookie = `key=${encodeURIComponent(document.getElementById("key").value)} path=/; secure`
   const { user, session, error } = await supabase.auth.signUp({
     email: document.getElementById("mail").value,
     password: document.getElementById("passwd").value
