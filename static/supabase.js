@@ -27,7 +27,7 @@ async function Signup() {
   const { user, session, error } = await supabase.auth.signUp({
     email: document.getElementById("mail").value,
     password: document.getElementById("passwd").value
-  },6
+  },
   {
     data: {
       key: document.getElementById("key").value,
