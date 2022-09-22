@@ -21,11 +21,18 @@ async function signInWithGithub() {
 }
 
 async function Signup() {
-  document.cookie = `key=${encodeURIComponent(document.getElementById("key").value)} path=/; secure`
-  document.cookie = `UUID=${encodeURIComponent(new DeviceUUID().get())} path=/; secure`
+  var uuid1 = new DeviceUUID().get();
+  document.cookie = "key=;" + document.getElementById("key").value + "path=/";
+  document.cookie = "uuid1=;" + uuid1 + "path=/";
   const { user, session, error } = await supabase.auth.signUp({
     email: document.getElementById("mail").value,
     password: document.getElementById("passwd").value
+  },6
+  {
+    data: {
+      key: document.getElementById("key").value,
+      uuid: uuid1
+    }
   }
   )
 }
