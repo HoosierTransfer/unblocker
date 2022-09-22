@@ -22,9 +22,7 @@ async function signInWithGithub() {
 }
 
 function Signup() {
-  const { data, error } = await supabase
-  .from('Users')
-  .insert([{ name: 'The Shire', country_id: 554 }])
+  alert("working");
   const { user, session, error } = await supabase.auth.signUp({
     email: "luke.b.hartung@outlook.com",
     password: "fdshj"
