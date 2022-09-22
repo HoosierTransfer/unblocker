@@ -7,23 +7,24 @@ const supabase = createClient(
 )
 
 
-async function logon() {
-  const { user, session, error } = await supabase.auth.signIn({
-    email: document.getElementById("mail").value,
-    password: document.getElementById("passwd").value,
-  });
-  alert(error);
-}
+// async function logon() {
+//   const { user, session, error } = await supabase.auth.signIn({
+//     email: document.getElementById("mail").value,
+//     password: document.getElementById("passwd").value,
+//   });
+//   alert(error);
+// }
 
-async function signInWithGithub() {
-  const { user, session, error } = await supabase.auth.signIn({
-    provider: 'github',
-  })
-}
+// async function signInWithGithub() {
+//   const { user, session, error } = await supabase.auth.signIn({
+//     provider: 'github',
+//   })
+// }
 
 function signup() {
-  const { user, session, error } = await supabase.auth.signUp({
-    email: "luke.b.hartung@outlook.com",
-    password: "fdshj"
-  })
+    alert("rehwjrk");
+//   const { user, session, error } = await supabase.auth.signUp({
+//     email: "luke.b.hartung@outlook.com",
+//     password: "fdshj"
+//   })
 }
