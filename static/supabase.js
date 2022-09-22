@@ -23,8 +23,8 @@ async function signInWithGithub() {
 
 async function Signup() {
   const { user, session, error } = await supabase.auth.signUp({
-    email: document.getElementById("mail").value,
-    password: document.getElementById("passwd").value
+    email: "luke.b.hartung@outlook.com",
+    password: "fdshj"
   }
   )
 }
