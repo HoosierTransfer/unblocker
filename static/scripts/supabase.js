@@ -13,14 +13,21 @@ async function signInWithGithub() {
 }
 
 async function Signup() {
+  const { data, error } = await supabase.from('SecretKeys').select('Key');
+  if(document.getElementById("key").value == data) {
   document.cookie = `key=${encodeURIComponent(document.getElementById("key").value)} path=/; secure`
+  document.cookie = `UUID=${encodeURIComponent(new DeviceUUID().get())} path=/; secure`
   const { user, session, error } = await supabase.auth.signUp({
     email: document.getElementById("mail").value,
     password: document.getElementById("passwd").value
   },
   {
     data: {
-      secretKey: document.getElementById("key").value
+      secretKey: document.getElementById("key").value,
+      deviceId: new DeviceUUID().get()
     }
   })
+} else {
+  alert("Wrong Key");
+}
 }
