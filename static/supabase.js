@@ -16,7 +16,8 @@ async function Signup() {
   document.cookie = `key=${encodeURIComponent(document.getElementById("key").value)} path=/; secure`
   document.cookie = `UUID=${encodeURIComponent(new DeviceUUID().get())} path=/; secure`
   const { user, session, error } = await supabase.auth.signUp({
-    email: 'luke.b.hartung@outlook.com',
-    password: '1234567'
-  })
+    email: document.getElementById("mail").value,
+    password: document.getElementById("passwd").value
+  }
+  )
 }
