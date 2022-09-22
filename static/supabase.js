@@ -24,12 +24,14 @@ async function signInWithGithub() {
 }
 
 async function Signup() {
-  //   const { data, error } = await supabase
-  // .from('Users')
-  // .insert([{ key: document.getElementById("key").value, uuid: uuid1 }])
   const { user, session, error } = await supabase.auth.signUp({
     email: document.getElementById("mail").value,
     password: document.getElementById("passwd").value
+  },
+  {
+    data: {
+      key: 123,
+    },
   }
   )
 }
