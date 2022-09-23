@@ -4,10 +4,11 @@
 	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 	<script>
 		import { createClient } from '@supabase/supabase-js'
-
+		function start() {
 		// Create a single supabase client for interacting with your database
 		const supabase = createClient('https://hxyegpdslremfvirwunq.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4eWVncGRzbHJlbWZ2aXJ3dW5xIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjM3NzM0NjEsImV4cCI6MTk3OTM0OTQ2MX0.h0EMF5FCpam2-IpzANEozOv1WOQXzGNwI32QyG1ELjE');
 		alert(supabase);
+		}
 		</script>
 	<link rel="stylesheet" href="style.css">
 	<title>Sign Up</title>
@@ -23,7 +24,7 @@
 				<input type="email" placeholder="Email" id="main"/>
 				<input type="password" placeholder="Password" id="passwd"/>
 				<input type="secret" placeholder="Secret Key" id="key"/>
-				<button onclick="signup()">Sign Up</button>
+				<button onclick="start()">Sign Up</button>
 			</form>
 		</div>
 		<div class="overlay-container">
