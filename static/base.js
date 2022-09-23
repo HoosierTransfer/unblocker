@@ -22,8 +22,5 @@ const supabase = createClient(
 // }
 
 function signup() {
-    const { user, session, error } = await supabase.auth.signUp({
-      email: 'example@email.com',
-      password: 'example-password',
-    })
+  alert("etest");
 }
