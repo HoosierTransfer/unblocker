@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from '@supabase/supabase-js';
 
 // async function logon() {
 //   const { user, session, error } = await supabase.auth.signIn({
