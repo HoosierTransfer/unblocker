@@ -15,10 +15,6 @@ var supabase;
 //   })
 // }
 
-function signup() {
-  alert("etest");
-}
-
 async function signUp() {
   //const { user, session, error } = await supabase.auth.signUp({email: document.getElementById("mail").value,password: document.getElementById("passwd").value,});
   alert("123");
