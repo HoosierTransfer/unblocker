@@ -52,6 +52,10 @@ button {
 	transition: transform 80ms ease-in;
 }
 
+button:hover {
+	transform: scale(1.1); 
+}
+
 form {
 	background-color: #FFFFFF;
 	display: flex;
