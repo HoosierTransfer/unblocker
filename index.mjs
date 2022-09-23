@@ -11,11 +11,6 @@ const fakeServe = new nodeStatic.Server('BlacklistServe/');
 const server = http.createServer();
 console.log("working");
 
-console.log(error);
-
-console.log(user);
-console.log(session);
-
 server.on('request', (request, response) => {
     const ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
     // Code from NebulaServices
