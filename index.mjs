@@ -15,6 +15,12 @@ const server = http.createServer();
 const io = new Server1(server);
 console.log("working");
 
+io.on('connection', (socket) => {
+    socket.on('Sign Up', (email), (passwd), (key) => {
+      console.log('message: ' + msg + passwd + key);
+    });
+  });
+
 server.on('request', (request, response) => {
     const ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
     // Code from NebulaServices
@@ -37,9 +43,3 @@ server.on('upgrade', (req, socket, head) => {
 });
 
 server.listen(process.env.PORT || 8080);
-
-io.on('connection', (socket) => {
-    socket.on('Sign Up', (email), (passwd), (key) => {
-      console.log('message: ' + msg + passwd + key);
-    });
-  });
