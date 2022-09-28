@@ -9,8 +9,8 @@ const bare = new Server('/bare/', '');
 
 const serve = new nodeStatic.Server('static/');
 const fakeServe = new nodeStatic.Server('BlacklistServe/');
-const { Server } = require("socket.io");
-const io = new Server(server);
+const { Server1 } = require("socket.io");
+const io = new Server(server1);
 const server = http.createServer();
 console.log("working");
 
