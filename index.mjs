@@ -11,7 +11,7 @@ const bare = new Server('/bare/', '');
 
 const serve = new nodeStatic.Server('static/');
 const fakeServe = new nodeStatic.Server('BlacklistServe/');
-const io = new Server(server1);
+const io = new Server(Server1);
 const server = http.createServer();
 console.log("working");
 
