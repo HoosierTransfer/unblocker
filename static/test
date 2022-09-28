@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="base.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+	<script src="https://kit.fontawesome.com/6ff9b32dcc.js" crossorigin="anonymous"></script>
+	<title>Log In</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+</html>
