@@ -27,10 +27,8 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
-</script>
-    <script>
-      import firebase from 'https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js';
-    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 ui.start('#firebaseui-auth-container', {
   signInOptions: [
@@ -38,6 +36,6 @@ ui.start('#firebaseui-auth-container', {
   ],
   // Other config options...
 });
-    </script>
+</script>
   </body>
 </html>
