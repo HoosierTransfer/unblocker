@@ -1,7 +1,13 @@
 {
   "dependencies": {
+    "@supabase/auth-ui-react": "^0.2.1",
+    "@supabase/supabase-js": "^2.0.0-rc.12",
     "bare-server-node": "github:tomphttp/bare-server-node",
-    "node-static": "^0.7.11"
+    "express": "^4.18.2",
+    "firebase": "^9.11.0",
+    "firebaseui": "^6.0.1",
+    "node-static": "^0.7.11",
+    "socket.io": "^4.5.2"
   },
   "name": "generalmathematics",
   "version": "1.0.0",
@@ -13,10 +19,10 @@
   },
   "keywords": [
     "proxy",
-    "tomp", 
-    "GeneralMathematics", 
-    "educational", 
-    "science", 
+    "tomp",
+    "GeneralMathematics",
+    "educational",
+    "science",
     "math"
   ],
   "author": "General Mathematics",

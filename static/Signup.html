@@ -4,10 +4,14 @@
  	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 	<link rel="stylesheet" href="style.css">
 	<title>Sign Up</title>
-	<script type="module" src="supabase.js">
 	</script>
 </head>
 <body>
+	<script type="module" src="supabase.js"></script>
+	<script type="module">
+		import { Signup } from "./supabase.js";
+		window.Signup1 = Signup;
+	  </script>
 	<div class="container" id="container">
 		<div class="form-container log-in-container">
 			<form action="#">
@@ -18,7 +22,7 @@
 				<input type="email" placeholder="Email" id="main"/>
 				<input type="password" placeholder="Password" id="passwd"/>
 				<input type="secret" placeholder="Secret Key" id="key"/>
-				<button onclick="Signup()" type="button">Sign Up</button>
+				<button onclick="Signup1()" type="button">Sign Up</button>
 			</form>
 		</div>
 		<div class="overlay-container">

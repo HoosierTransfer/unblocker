@@ -1,5 +1,4 @@
-const { createClient } = supabase
-
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 // Create a single supabase client for interacting with your database
 const supabase = createClient(
   'https://hxyegpdslremfvirwunq.supabase.co',
@@ -21,11 +20,10 @@ async function signInWithGithub() {
   })
 }
 
-async function Signup() {
-  alert("working");
+export async function Signup() {
   const { user, session, error } = await supabase.auth.signUp({
-    email: "luke.b.hartung@outlook.com",
-    password: "fdshj"
+    email: document.getElementById("mail").value,
+    password: document.getElementById("passwd").value
   }
   )
 }
