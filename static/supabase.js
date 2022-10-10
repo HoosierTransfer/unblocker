@@ -21,7 +21,7 @@ async function signInWithGithub() {
   })
 }
 
-function Signup() {
+async function Signup() {
   alert("working");
   const { user, session, error } = await supabase.auth.signUp({
     email: "luke.b.hartung@outlook.com",
