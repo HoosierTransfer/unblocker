@@ -1,4 +1,4 @@
-import { createClient } from 'https://unpkg.com/@supabase/supabase-js'
+//import { createClient } from 'https://unpkg.com/@supabase/supabase-js'
 
 // Create a single supabase client for interacting with your database
 const supabase = createClient(
