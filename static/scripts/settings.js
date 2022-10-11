@@ -1,10 +1,10 @@
 if (getCookie("icon") == "")
 {
-    setCookie("icon", "./img/icons/math.ico", 365*100);
+    setCookie("icon", "./img/icons/logo.ico", 365*100);
 }
 if (getCookie("title") == "")
 {
-    setCookie("title", "General Mathematics", 365*100);
+    setCookie("title", "Science Help", 365*100);
 }
 var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
 link.type = 'image/x-icon';

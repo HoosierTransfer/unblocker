@@ -1,4 +1,4 @@
-<h1 align="center">General Mathematics</h1>
+<h1 align="center">Science Help</h1>
 
 ## Features 
 - Tons of apps & games
@@ -20,9 +20,9 @@
 - Any static website
 - And more!
 
-# Deploying and Setting up your own General Mathematics
+# Deploying and Setting up your own Science Help
 
-## General Mathematics Quick Deploys
+## Science Help Quick Deploys
 
 [![Deploy to Heroku](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/heroku.svg)](https://heroku.com/deploy/?template=https://github.com/GeneralMathematics/General-Mathematics-Beta)
 [![Run on Replit](https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/replit.svg)](https://replit.com/github/GeneralMathematics/General-Mathematics-Beta)
