@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins';
+    font-family: 'Quicksand', sans-serif;
 }
 
 :root {
@@ -166,7 +168,7 @@ body {
     overflow: hidden;
     border-right: 3px solid;
     font-size: 2em;
-    font-family: 'Poppins';
+    font-family: 'Quicksand', sans-serif;
     color: var(--textcolor);
 }
 
