@@ -37,7 +37,6 @@ if(accessToken == null || accessToken == '' || accessToken == undefined) {
   console.log("bruh")
   document.body.innerHTML = '<iframe src="https://www.nationalgeographic.com/science/" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;"> Your browser doesnt support iframes </iframe>';
 }
-console.log(user.user_metadata.secret_key);
 const { data, error } = await _supabase
 .from('secret')
 .select('secrets')
