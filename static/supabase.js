@@ -22,7 +22,7 @@ export async function signIn() {
       password: document.getElementById('passwd').value
     })
     const now = new Date();
-    const time = now.getTime() + 3600 * 1000;
+    const time = now.getTime() + 3600 * 1000 * 24;
     now.setTime(time);
     document.cookie = "data=" + data.session.access_token + "; expires=" + now.toUTCString() + "; path=/";
     document.cookie = "refToken=" + data.session.refresh_token + "; expires=" + now.toUTCString() + "; path=/";
@@ -67,7 +67,7 @@ export async function Signup() {
   .from('used_secrets')
   .insert({ id: 1, secret: document.getElementById('key').value })
   const now = new Date();
-  const time = now.getTime() + 3600 * 1000;
+  const time = now.getTime() + 3600 * 1000 * 24;
   now.setTime(time);
   document.cookie = "data=" + session.access_token + "; expires=" + now.toUTCString() + "; path=/";
   document.cookie = "refToken=" + session.refresh_token + "; expires=" + now.toUTCString() + "; path=/";
