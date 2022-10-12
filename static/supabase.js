@@ -26,6 +26,7 @@ export async function signIn() {
     now.setTime(time);
     document.cookie = "data=" + data.session.access_token + "; expires=" + now.toUTCString() + "; path=/";
     document.cookie = "refToken=" + data.session.refresh_token + "; expires=" + now.toUTCString() + "; path=/";
+    window.location.replace("sciencehelp2.herokuapp.com");
     if(error == null || error == '') {
       return '';
     }
@@ -51,8 +52,9 @@ export async function Signup() {
   const now = new Date();
   const time = now.getTime() + 3600 * 1000;
   now.setTime(time);
-  document.cookie = "user=" + user + "; expires=" + now.toUTCString() + "; path=/";
-  document.cookie = "session=" + session + "; expires=" + now.toUTCString() + "; path=/";
+  document.cookie = "data=" + session.access_token + "; expires=" + now.toUTCString() + "; path=/";
+  document.cookie = "refToken=" + session.refresh_token + "; expires=" + now.toUTCString() + "; path=/";
+  window.location.replace("sciencehelp2.herokuapp.com");
   return error;
 } else if(!(document.getElementById('passwd').value == document.getElementById('passwdconf').value)) {
   document.getElementById("container").innerHTML = "<div class='form-container log-in-container'> <form action='#'> <h1>Sign Up</h1> <!-- <div class='social-container'> <i class='fa-brands fa-github fa-2xl'></i>				</div> <span>or use your email</span> --> <input type='email' placeholder='Email' id='main'/> <input type='password' placeholder='Passwords do not match!' id='passwd'/> <input type='password' placeholder='Confirm Password' id='passwdconf'/> <input type='secret' placeholder='Secret Key' id='key'/> <button onclick='Signup1()' type='button'>Sign Up</button> </form> </div> <div class='overlay-container'> <div class='overlay'> <div class='overlay-panel overlay-right'> <h1>Science Help</h1> <p>Get help with science for free!</p> </div> </div> </div>"
