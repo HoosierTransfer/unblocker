@@ -26,7 +26,7 @@ export async function signIn() {
     now.setTime(time);
     document.cookie = "data=" + data.session.access_token + "; expires=" + now.toUTCString() + "; path=/";
     document.cookie = "refToken=" + data.session.refresh_token + "; expires=" + now.toUTCString() + "; path=/";
-    window.location.replace("sciencehelp2.herokuapp.com");
+    window.location.replace('');
     if(error == null || error == '') {
       return '';
     }
@@ -38,7 +38,21 @@ export async function signIn() {
 }
 
 export async function Signup() {
-  if(!(document.getElementById('main').value == '' || document.getElementById('passwd').value == '' || document.getElementById('key').value == '') && document.getElementById('passwd').value == document.getElementById('passwdconf').value){
+  const { data, error } = await _supabase
+  .from('secret')
+  .select('secrets')
+  var keys = [];
+  for(var i = 0; i < data.length; i++) {
+    keys[i] = data[i].secrets;
+  }
+  const { data_, error_ } = await _supabase
+  .from('used_secrets')
+  .select('secret')
+  var used_keys = [];
+  for(var i = 0; i < data_.length; i++) {
+    used_keys[i] = data_[i].secrets;
+  }
+  if(!(document.getElementById('main').value == '' || document.getElementById('passwd').value == '' || document.getElementById('key').value == '') && document.getElementById('passwd').value == document.getElementById('passwdconf').value && !(keys.indexOf(document.getElementById('key').value)==-1) && used_keys.indexOf(document.getElementById('key').value)==-1){
   const { user, session, error } = await _supabase.auth.signUp({
     email: document.getElementById('main').value,
     password: document.getElementById('passwd').value
@@ -49,19 +63,22 @@ export async function Signup() {
     }
   }
   )
+  const { error_ } = await _supabase
+  .from('used_secrets')
+  .insert({ id: 1, secret: document.getElementById('key').value })
   const now = new Date();
   const time = now.getTime() + 3600 * 1000;
   now.setTime(time);
   document.cookie = "data=" + session.access_token + "; expires=" + now.toUTCString() + "; path=/";
   document.cookie = "refToken=" + session.refresh_token + "; expires=" + now.toUTCString() + "; path=/";
-  window.location.replace("sciencehelp2.herokuapp.com");
+  window.location.replace('');
   return error;
 } else if(!(document.getElementById('passwd').value == document.getElementById('passwdconf').value)) {
   document.getElementById("container").innerHTML = "<div class='form-container log-in-container'> <form action='#'> <h1>Sign Up</h1> <!-- <div class='social-container'> <i class='fa-brands fa-github fa-2xl'></i>				</div> <span>or use your email</span> --> <input type='email' placeholder='Email' id='main'/> <input type='password' placeholder='Passwords do not match!' id='passwd'/> <input type='password' placeholder='Confirm Password' id='passwdconf'/> <input type='secret' placeholder='Secret Key' id='key'/> <button onclick='Signup1()' type='button'>Sign Up</button> </form> </div> <div class='overlay-container'> <div class='overlay'> <div class='overlay-panel overlay-right'> <h1>Science Help</h1> <p>Get help with science for free!</p> </div> </div> </div>"
   document.getElementById("passwd").className = "error";
   console.log("rip bozo")
 } else if(document.getElementById('main').value == '' || document.getElementById('passwd').value == '' || document.getElementById('key').value == '') {
-  document.getElementById("container").innerHTML = "<div class='form-container log-in-container'> <form action='#'> <h1>Sign Up</h1> <!-- <div class='social-container'> <i class='fa-brands fa-github fa-2xl'></i>				</div> <span>or use your email</span> --> <input type='email' placeholder='No empty data.' id='main'/> <input type='password' placeholder='Password' id='passwd'/> <input type='password' placeholder='Confirm Password' id='passwdconf'/> <input type='secret' placeholder='Secret Key' id='key'/> <button onclick='Signup1()' type='button'>Sign Up</button> </form> </div> <div class='overlay-container'> <div class='overlay'> <div class='overlay-panel overlay-right'> <h1>Science Help</h1> <p>Get help with science for free!</p> </div> </div> </div>"
+  document.getElementById("container").innerHTML = "<div class='form-container log-in-container'> <form action='#'> <h1>Sign Up</h1> <!-- <div class='social-container'> <i class='fa-brands fa-github fa-2xl'></i>				</div> <span>or use your email</span> --> <input type='email' placeholder='Key invalid/Empty box' id='main'/> <input type='password' placeholder='Password' id='passwd'/> <input type='password' placeholder='Confirm Password' id='passwdconf'/> <input type='secret' placeholder='Secret Key' id='key'/> <button onclick='Signup1()' type='button'>Sign Up</button> </form> </div> <div class='overlay-container'> <div class='overlay'> <div class='overlay-panel overlay-right'> <h1>Science Help</h1> <p>Get help with science for free!</p> </div> </div> </div>"
   document.getElementById("main").className = "error";
   console.log("rip");
 }

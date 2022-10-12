@@ -9,10 +9,10 @@
 }
 
 :root {
-    --background: #24223e;
-    --sidebarcolor1: #11101d;
-    --sidebarcolor2: #fff;
-    --textcolor: #fff;
+    --background: #3B4252;
+    --sidebarcolor1: #2E3440;
+    --sidebarcolor2: #D8DEE9;
+    --textcolor: #ECEFF4;
 }
 
 /* Generic CSS */
@@ -37,7 +37,8 @@ body {
     left: 0;
     background: var(--sidebarcolor1);
     padding: 6px 14px;
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
+    border-radius: 15px;
 }
 
 .sidebar.active {
@@ -51,7 +52,7 @@ body {
     width: 100%;
     align-items: center;
     opacity: 0;
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
 }
 
 .sidebar.active .logo_content .logo {
@@ -125,7 +126,7 @@ body {
 .sidebar .links_name {
     opacity: 0;
     pointer-events: none;
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
 }
 
 .sidebar.active .links_name {
@@ -140,7 +141,7 @@ body {
     height: 100%;
     width: calc(100% - 78px);
     left: 78px;
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
     background: var(--background);
     background-repeat: no-repeat;
     background-size: 100%;
@@ -165,10 +166,9 @@ body {
 
 .home_content .typing {
     width: 54ch;
-    animation: typing 4s steps(58), blink .5s step-end infinite alternate;
     white-space: nowrap;
     overflow: hidden;
-    border-right: 3px solid;
+    border-right: 0px solid;
     font-size: 2em;
     font-family: 'Quicksand', sans-serif;
     color: var(--textcolor);
@@ -176,25 +176,13 @@ body {
 
 /* Keyframes for typing animation on the homepage */
 
-@keyframes typing {
-    from {
-        width: 0;
-    }
-}
-
-@keyframes blink {
-    50% {
-        border-color: transparent;
-    }
-}
-
 /* Contains CSS for Content on the Settings Page */
 
 .background_content {
     position: absolute;
     height: 100%;
     width: 100%;
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
     background: var(--background);
     background-repeat: no-repeat;
     background-size: 100%;
@@ -216,7 +204,7 @@ body {
     height: 100%;
     background: var(--sidebarcolor1);
     padding: 6px 14px;
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
 }
 
 .background_content ul li {
@@ -281,15 +269,15 @@ button{
     padding: 15px 0;
     text-align: center;
     margin: 20px 10px;
-    border-radius: 20px;
+    border-radius: 15px;
     font-weight: bold;
-    border: 2px solid var(--textcolor);
+    border: 4px solid var(--textcolor);
     background: transparent;
     color: var(--textcolor);
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
     height: 150px;
 }
 
@@ -299,21 +287,20 @@ width: 150px;
 padding: 15px 0;
 text-align: center;
 margin: 20px 10px;
-border-radius: 20px;
+border-radius: 15px;
 border: 0px solid var(--textcolor);
 font-weight: bold;
 background: transparent;
 cursor: pointer;
 overflow: hidden;
-transition: all 0.5s ease;
+transition: all 0.25s ease;
 height: 150px;
 }
    
 button:hover{
-    -webkit-transition: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
-    transition: 1.5s ease;
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    /* transition: 0.25s ease; */
     text-decoration: none;
 }
 
@@ -338,20 +325,20 @@ h2 {
 }
 
 footer{
-    background-color:#d3d3d3;
+    background-color:#D8DEE9;
     font-family: 'Quicksand', sans-serif;
     display:flex;
     align-items:center;
     text-align:center;
     justify-content:space-between;
-    color:#000;
+    color:#434C5E;
     font-size:20px;
     margin-top: 100px;
 }
 
 #fullscreen {
     
-    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3744450/man.jpeg');
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('/img/bg/lowpoly.png');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -361,7 +348,7 @@ footer{
 #particles-js {
     
     height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3744450/man.jpeg');
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('/img/bg/lowpoly.png');
     background-size: cover;
     background-position: center;
     

@@ -1,3 +1,10 @@
+var client = new XMLHttpRequest();
+client.open('GET', '/sidebar.html');
+client.onreadystatechange = function() {
+  document.getElementById("menu_").innerHTML = client.responseText;
+}
+client.send();
+
 const form = document.querySelector('form');
 const input = document.querySelector('input');
 const urlParams = new URLSearchParams(window.location.search);
@@ -55,7 +62,7 @@ function makeloader(){
 	const loader = document.createElement("loader");
 	loader.innerHTML = 
 	`<div id="loader-wrapper">
-	  <div id="loader"></div>
+  <div id="loader"></div>
    
 	  <div class="loader-section section-left"></div>
 	  <div class="loader-section section-right"></div>
@@ -146,7 +153,7 @@ function loadPallet(pal)//function to load pallets
   }
   return sheet;
 }
-pallet = "background/url(./img/bg/default.svg);sidebarcolor1/#11101d;sidebarcolor2/#fff;textcolor/#fff;";
+pallet = "background/url(./img/bg/default.svg);sidebarcolor1/#2E3440;sidebarcolor2/D8DEE9;textcolor/#ECEFF4;";
 
 document.addEventListener('DOMContentLoaded', function () 
 {
