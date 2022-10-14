@@ -24,6 +24,7 @@ body {
     width: 100%;
     background-color: var(--background);  
     min-height: 100vh;
+    z-index: 0;
 }
 
 /* Contains CSS for the Sidebar AKA: Navigation Bar */
@@ -263,25 +264,25 @@ body {
 
 /* Buttons */
 
-button{
+/* button{
     margin-left:25%;
     margin-right:25%;
     padding: 15px 0;
     text-align: center;
     margin: 20px 10px;
-    border-radius: 15px;
+    border-radius: 20px;
     font-weight: bold;
-    border: 4px solid var(--textcolor);
-    background: transparent;
+    border: 3px solid #81A1C1;
+    background: #5E81AC;
     color: var(--textcolor);
     cursor: pointer;
     position: relative;
     overflow: hidden;
     transition: all 0.25s ease;
     height: 150px;
-}
+} */
 
-.imagebutton {
+.imagebutton:not(.inv) {
 color: transparent;
 width: 150px;
 padding: 15px 0;
@@ -297,12 +298,11 @@ transition: all 0.25s ease;
 height: 150px;
 }
    
-button:hover{
+/* button:hover{
     -ms-transform: scale(1.1);
     transform: scale(1.1);
-    /* transition: 0.25s ease; */
     text-decoration: none;
-}
+} */
 
 .filtertext
 {
@@ -364,3 +364,268 @@ footer{
     color:aquamarine;
 }
 
+button:not(.inv){
+    background: linear-gradient(to right,#bf6a61 ,#bf616a);
+    background-color: #bf616a;
+    color: #eceff4;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: medium;
+    text-decoration: none;
+    padding: 14px 0;
+    margin-left:25%;
+    margin-right:25%;
+    margin: 5px 5px;
+    border: 0px solid #000;
+    border-radius: 15px;
+    display: inline-block;
+    transition: 0.25s ease;
+   }
+   button:not(.inv):hover{
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+   }
+   button:not(.inv):active{
+    transform: scale(0.95);
+   }
+
+.avatar {
+    /* Rounded border */
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    /* Center the content */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    /* Size */
+    height: 4rem;
+    width: 4rem;
+}
+
+.avatar__image {
+    /* Size */
+    z-index: 1000;
+    position: relative;
+    border-radius: 100px;
+    height: 50%;
+    width: 50%;
+}
+
+
+.box {
+    width: 275px;
+    height: 175px;
+    border: 4px solid;
+    border-color:#000;
+    background: linear-gradient(45deg,#4C566A ,#3B4252);
+    /* background-color: #434C5E; */
+    position: relative;
+    z-index: 3;
+    transition: all 0.5s ease;
+    border-radius: 20px;
+}
+
+.invbox {
+    width: 0px;
+    height: 0px;
+    border: 0px solid;
+    border-color:transparent;
+    /* background-color: #434C5E; */
+    position: relative;
+    z-index: 3;
+    transition: all 0.5s ease;
+}
+
+.inv {
+    width: 0px;
+    height: 0px;
+    border: 0px solid;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+/* .foldoutava {  display: grid;
+    grid-template-columns: 83px 83px 83px;
+    grid-template-rows: 50px 50px 50px;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "ava username username"
+      "changeava avainput avainput"
+      "signout accsettings dynamicbox";
+  }
+  
+  .ava { 
+    grid-area: ava;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-8%);
+    transform: translateX(-2%);
+ }
+  
+  .username { grid-area: username;
+    width: 200%;
+    height: 100%;
+    text-align: center;
+    color: var(--textcolor);
+    font-weight: bold;
+    transform: translateY(-8%);
+    transform: translateX(-2%);
+
+}
+  
+  .changeava { 
+    grid-area: changeava;
+    text-align: center; 
+    width: 100%;
+    height: 100%;
+    transform: translate(-102%, -10%);
+}
+  
+  .avainput {
+     grid-area: avainput;
+     width: 200%;
+     height: 100%;
+     transform: translateY(-108%);
+ }
+  
+  .signout { 
+    grid-area: signout;
+    width: 100%;
+    height: 100%;
+    transform: translate(-100%, -100%);
+ }
+  
+  .accsettings { 
+    grid-area: accsettings;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-208%);
+ }
+  
+  .dynamicbox { 
+    grid-area: dynamicbox;
+    width: 100%;
+    height: 100%;
+    transform: translate(100%, -308%);
+ } */
+
+ /* .rows {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "username"
+    "avatars"
+    "tools";
+    grid-template-columns: 275px;
+    grid-template-rows: 58.3px 58.3px 58.3px;
+  }
+  .rows > div {
+    border: 1px dashed #888;
+  }
+  
+  .username {
+    grid-area: username;
+    width: 100%;
+    height: 100%;
+  }
+  .avatars {
+    grid-area: avatars;
+    width: 100%;
+    height: 100%;
+  }
+  .tools {
+    grid-area: tools;
+    width: 100%;
+    height: 100%;
+  }
+
+.vert {
+    position: relative;
+    top: 45%; 
+    text-align: center;
+    transform: translateY(-50%);
+    color: var(--textcolor);
+    font-weight: medium;
+}
+
+.name {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "avatar_ username_";
+    grid-template-columns: 58.3px 216.7px;
+    grid-template-rows: 58.3px;
+  }
+  .name > div {
+    border: 1px solid #888;
+  }
+  
+  .avatar_ {
+    grid-area: avatar;
+    width: 100%;
+    height: 100%;;
+    border: 2px solid #000;
+  }
+  .username_ {
+    grid-area: username;
+    width: 100%;
+    height: 100%;
+  }
+
+.ava {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    
+    grid-template-areas: "avatarchange avatarinput";
+    grid-template-columns: 100px 175px;
+    grid-template-rows: 58.3px;
+  }
+  .ava > div {
+    border: 1px dashed #888;
+  }
+  
+  .avatarchange {
+    grid-area: avatarchange;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #000;
+  }
+  .avatarinput {
+    grid-area: avatarinput;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #000;
+  }
+
+.options {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "signout settings dynamic";
+    grid-template-columns: 91.6px 91.6px 91.6px;
+    grid-template-rows: 53.3px;
+  }
+  .options > div {
+    border: 1px dashed #888;
+  }
+  
+  .signout {
+    grid-area: signout;
+    border: 2px solid #000;
+  }
+  .settings {
+    grid-area: settings;
+    border: 2px solid #000;
+  }
+  .dynamic {
+    grid-area: dynamic;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #000;
+  } */
