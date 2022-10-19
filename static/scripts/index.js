@@ -2,9 +2,10 @@ var client = new XMLHttpRequest();
 client.open('GET', '/sidebar.html');
 client.onreadystatechange = function() {
   document.getElementById("menu_").innerHTML = client.responseText;
+  console.log(document.getElementById('avatar').innerHTML);
+  document.getElementById('avatar').innerHTML = "<img class='avatar__image' src='https://hxyegpdslremfvirwunq.supabase.co/storage/v1/object/public/avatars/default-avatar.png'>";
 }
 client.send();
-
 const form = document.querySelector('form');
 const input = document.querySelector('input');
 const urlParams = new URLSearchParams(window.location.search);

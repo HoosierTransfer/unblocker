@@ -1,5 +1,7 @@
 <script src="https://kit.fontawesome.com/6ff9b32dcc.js" crossorigin="anonymous"></script>
+<script src="user.js"></script>
 <ul class="nav_list" style="z-index:9999; position:relative">
+
 
     <!-- Home Icon and Title on the Sidebar -->
     <li>
@@ -30,12 +32,12 @@
     </li>                
     <!-- Sites Icon and Title on the Sidebar -->
     <!-- Support Icon and Title on the Sidebar -->
-    <li>
+    <!-- <li>
         <a href="./support.html">
             <i class="fa-solid fa-question"></i>
             <span class="links_name">Support</span>
         </a>
-    </li>   
+    </li>    -->
     <!-- Community Icon and Title on the Sidebar -->             
     <li>
         <a href="https://discord.gg/2gk29vz7GV" target="_blank">
@@ -58,16 +60,44 @@
             <span class="links_name">Settings</span>
         </a>
     </li>
-    <li>
+    <!-- <li>
         <a href="./privacy.html">
             <i class="fa-solid fa-fingerprint"></i>
             <span class="links_name">Privacy</span>
         </a>
-    </li>
+    </li> -->
     <!-- <li>
         <a href="./terms.html">
             <i class='bx bx-clipboard'></i>
             <span class="links_name">Terms</span>
         </a>
     </li> -->
+    <div class="invbox" id="box">
+        <div class="rows">
+            <div class="username">
+                <button type="button" class="inv" onclick="if(document.getElementById('box').className == 'invbox') { document.getElementById('box').className = 'box'; document.getElementById('fold').style.display = ''; document.getElementById('fold_').style.display = ''; document.getElementById('ava').style.display = ''; document.getElementById('tool').style.display = ''; expanded = true; console.log(10); } else { document.getElementById('box').className = 'invbox'; document.getElementById('fold').style.display = 'none'; document.getElementById('fold_').style.display = 'none'; document.getElementById('ava').style.display = 'none'; document.getElementById('tool').style.display = 'none'; expanded = false; console.log(1); }">
+        
+
+                <div class="name">
+                    <div class="avatar_">
+                        <div class="avatar" id="avatar">
+                            <!-- Avatar image -->
+                            <img class="avatar__image" src="..." />
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="username_" style="display: none;" id="fold_"><span class="vert">username</span></div>
+                  </div>
+            </div>
+            
+        </div>
+            </div>
+            
+        
+
+    </div>
+    
+
+    </span>
 </ul>
