@@ -4,6 +4,19 @@ const _supabase = createClient(
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4eWVncGRzbHJlbWZ2aXJ3dW5xIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjM3NzM0NjEsImV4cCI6MTk3OTM0OTQ2MX0.h0EMF5FCpam2-IpzANEozOv1WOQXzGNwI32QyG1ELjE'
 )
 
+async function setPage() {
+    for(var i = 0; i < pages.length; i++) {
+        if(pages[i] == (window.location.pathname).split('/')[(window.location.pathname).split('/').length - 1]) {
+            var client = new XMLHttpRequest();
+                client.open('GET', '/' + real[i]);
+            client.onreadystatechange = function() {
+                document.innerHTML = client.responseText;
+            }
+client.send();
+        }
+    }
+}
+
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
