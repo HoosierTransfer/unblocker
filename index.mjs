@@ -27,7 +27,7 @@ const server = http.createServer();
 // io = require('socket.io')(server);
 console.log("working");
 
-app.use(express.static(join(__dirname, 'static/')));
+app.use(express.static('static'));
 
 // server.on('request', (request, response) => {
 //     const ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
