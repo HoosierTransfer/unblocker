@@ -2,6 +2,7 @@ import Server from 'bare-server-node';
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 import http from 'http';
+const socketIO = require('socket.io');
 import nodeStatic from 'node-static';
 import { createClient } from '@supabase/supabase-js';
 const WebSocket = require('ws');
@@ -18,16 +19,8 @@ const wss = new WebSocket.Server({ port: 7071 });
 const serve = new nodeStatic.Server('static/');
 const fakeServe = new nodeStatic.Server('BlacklistServe/');
 const server = http.createServer();
+let io = socketIO(server)
 console.log("working");
-
-wss.on('connection', (ws) => {
-    const id = uuidv4();
-    const color = Math.floor(Math.random() * 360);
-    const metadata = { id, color };
-    console.log(123)
-
-    clients.set(ws, metadata);
-});
 
 server.on('request', (request, response) => {
     const ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
@@ -37,6 +30,11 @@ server.on('request', (request, response) => {
     if (isLS)
         fakeServe.serve(request, response);
     else {
+
+        io.on('connection', (socket)=>{
+            console.log('New user connected');
+        });
+        
         if (bare.route_request(request, response))
             return true;
 
