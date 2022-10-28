@@ -30,7 +30,7 @@ export async function signIn() {
   document.getElementById("container").innerHTML = "<div class='container' id='container'> <div class='form-container log-in-container'> <form action='#'> <h1>Login</h1> <!-- <div class='social-container'> <div onclick='signInWithGithub()'> <i class='fa-brands fa-github fa-2xl'></i> </div>				 --> </div> <input type='email' placeholder='Wrong email or password' id='main'/> <input type='password' placeholder='Password' id='passwd'/> <a href='#'>Forgot your password?</a> <button onclick='signIn()'>Log In</button> </form> </div> <div class='overlay-container'> <div class='overlay'> <div class='overlay-panel overlay-right'> <h1>Science Help</h1> <p>Get help with science for free!</p> </div> </div> </div>";
   document.getElementById("main").className = "error";
   console.log("rip");
-  replace("sciencehelp.herokuapp.com");
+  replace("sciencehelp2.herokuapp.com");
   return 0;
 }
 
@@ -79,5 +79,5 @@ export async function Signup() {
   document.getElementById("main").className = "error";
   console.log("rip");
 }
-replace("sciencehelp.herokuapp.com");
+replace("sciencehelp2.herokuapp.com");
 }
