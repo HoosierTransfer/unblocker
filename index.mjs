@@ -45,8 +45,8 @@ app.use(express.static('static'));
 //     }
 // });
 
-io.on('connection', (socket)=>{
-    console.log('New user connected');
-});
+// io.on('connection', (socket)=>{
+//     console.log('New user connected');
+// });
 
 app.listen(process.env.PORT || 8080);
