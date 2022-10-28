@@ -20,6 +20,7 @@ const serve = new nodeStatic.Server('static/');
 const fakeServe = new nodeStatic.Server('BlacklistServe/');
 const server = http.createServer();
 let io = socketIO(server)
+io = require('socket.io').listen(server);
 console.log("working");
 
 server.on('request', (request, response) => {
