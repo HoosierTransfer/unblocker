@@ -1,5 +1,7 @@
 import Server from 'bare-server-node';
 import { Server as server_ } from 'socket.io';
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 import http from 'http';
 import nodeStatic from 'node-static';
 import { createClient } from '@supabase/supabase-js';
