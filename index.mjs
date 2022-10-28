@@ -12,7 +12,7 @@ const bare = new Server('/bare/', '');
 const serve = new nodeStatic.Server('static/');
 const fakeServe = new nodeStatic.Server('BlacklistServe/');
 const server = http.createServer();
-const io = new server_(server);
+var io = new server_(server);
 console.log("working");
 
 io.on('connection', (socket) => {
@@ -35,3 +35,4 @@ server.on('request', (request, response) => {
 });
 
 server.listen(process.env.PORT || 8080);
+io = require('socket.io').listen(server);
