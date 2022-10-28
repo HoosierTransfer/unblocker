@@ -1,19 +1,20 @@
+<!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="admin.css">
         <script src="admin.js"></script>
 
-<script src="/socket.io/socket.io.js"></script>
+<!-- <script src="/socket.io/socket.io.js"></script>
 <script>
-var socket=io()
-</script>
+    var socket=io()
+</script> -->
     </head>
     <body>
         <div class="container">
-            <div class="a-oZv1p">a-oZv1p</div>
-            <div class="a-57lPJ">a-57lPJ</div>
-            <div class="a-QkNMZ">a-QkNMZ</div>
-            <div class="a-Z8w1q">a-Z8w1q</div>
+            <div class="a-oZv1p"><input type="text" placeholder="Game Url" id="game"></div>
+            <div class="a-57lPJ"><input type="text" placeholder="Game Image" id="game_img"></div>
+            <div class="a-QkNMZ"><input type="text" placeholder="Game Name" id="game_name"></div>
+            <div class="a-Z8w1q"><button onclick="sendmessage()">submit</button></div>
             <div class="a-gpx01-0">a-gpx01-0</div>
             <div class="a-gpx01-1">a-gpx01-1</div>
             <div class="a-gpx01-2">a-gpx01-2</div>
@@ -27,5 +28,6 @@ var socket=io()
             <div class="a-XQ7Wm-2">a-XQ7Wm-2</div>
             <div class="a-XQ7Wm-3">a-XQ7Wm-3</div>
           </div>
+          <div id="chatbox"></div>
     </body>
 </html>

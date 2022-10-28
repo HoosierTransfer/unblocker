@@ -7,9 +7,6 @@ const _supabase = createClient(
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4eWVncGRzbHJlbWZ2aXJ3dW5xIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjM3NzM0NjEsImV4cCI6MTk3OTM0OTQ2MX0.h0EMF5FCpam2-IpzANEozOv1WOQXzGNwI32QyG1ELjE'
 )
 
-console.log(data);
-console.log(error);
-
 
 export async function signIn() {
   if(!(document.getElementById('main').value == '' || document.getElementById('passwd').value == '')){
@@ -42,31 +39,17 @@ export async function Signup() {
   for(var i = 0; i < data.length; i++) {
     keys[i] = data[i].secrets;
   }
-  const { data_, error_ } = await _supabase
-  .from('used_secrets')
-  .select('secret')
-  var used_keys = [];
-  for(var i = 0; i < data_.length; i++) {
-    used_keys[i] = data_[i].secrets;
-  }
-  if(!(document.getElementById('main').value == '' || document.getElementById('passwd').value == '' || document.getElementById('key').value == '') && document.getElementById('passwd').value == document.getElementById('passwdconf').value && !(keys.indexOf(document.getElementById('key').value)==-1) && used_keys.indexOf(document.getElementById('key').value)==-1){
+  if(!(document.getElementById('main').value == '' || document.getElementById('passwd').value == '' || document.getElementById('key').value == '') && document.getElementById('passwd').value == document.getElementById('passwdconf').value && !(keys.indexOf(document.getElementById('key').value)==-1)){
   const { user, session, error } = await _supabase.auth.signUp({
     email: document.getElementById('main').value,
-    password: document.getElementById('passwd').value
-  },
-  {
+    password: document.getElementById('passwd').value,
+    options: {
     data: {
       secret_key: document.getElementById('key').value,
     }
   }
-  )
-  const { data, error } = await _supabase
-  .from('secret')
-  .select('secrets')
-  var keys = [];
-  if(!(keys.indexOf(document.getElementById('key').value) == -1)){
-    return 0;
-  }
+})
+  console.log(error)
   const now = new Date();
   const time = now.getTime() + 3600 * 1000 * 24;
   now.setTime(time);
@@ -83,5 +66,5 @@ export async function Signup() {
   document.getElementById("main").className = "error";
   console.log("rip");
 }
-replace("sciencehelp2.herokuapp.com");
+Replace("sciencehelp2.herokuapp.com");
 }
