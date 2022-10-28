@@ -1,24 +1,33 @@
 import Server from 'bare-server-node';
-import { Server as server_ } from 'socket.io';
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 import http from 'http';
 import nodeStatic from 'node-static';
 import { createClient } from '@supabase/supabase-js';
+const WebSocket = require('ws');
 var supabase;
+
+const clients = new Map();
+
 //24342
 supabase = createClient('https://hxyegpdslremfvirwunq.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4eWVncGRzbHJlbWZ2aXJ3dW5xIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjM3NzM0NjEsImV4cCI6MTk3OTM0OTQ2MX0.h0EMF5FCpam2-IpzANEozOv1WOQXzGNwI32QyG1ELjE');
 const PORT = process.env.PORT || 8080;
 const bare = new Server('/bare/', '');
 
+const wss = new WebSocket.Server({ port: 7071 });
 const serve = new nodeStatic.Server('static/');
 const fakeServe = new nodeStatic.Server('BlacklistServe/');
 const server = http.createServer();
-var io = require('socket.io')(server);
-io.on('connection', function(socket){
-    console.log('A user connected');
-});
 console.log("working");
+
+wss.on('connection', (ws) => {
+    const id = uuidv4();
+    const color = Math.floor(Math.random() * 360);
+    const metadata = { id, color };
+    console.log(123)
+
+    clients.set(ws, metadata);
+});
 
 server.on('request', (request, response) => {
     const ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
