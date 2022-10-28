@@ -1,5 +1,6 @@
 import Server from 'bare-server-node';
 import http from 'http';
+import WebSocket, { WebSocketServer } from 'ws';
 import nodeStatic from 'node-static';
 
 const PORT = process.env.PORT || 8080;
@@ -8,6 +9,7 @@ const bare = new Server('/bare/', '');
 const serve = new nodeStatic.Server('static/');
 const fakeServe = new nodeStatic.Server('BlacklistServe/');
 const server = http.createServer();
+const ws = new WebSocket('ws://sciencehelp2.herokuapp.com/');
 console.log("working");
 
 server.on('request', (request, response) => {
@@ -24,6 +26,10 @@ server.on('request', (request, response) => {
 
         serve.serve(request, response);
     }
+});
+
+ws.on('message', function message(data) {
+    console.log('received: %s', data);
 });
 
 server.listen(process.env.PORT || 8080);
