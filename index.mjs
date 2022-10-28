@@ -14,13 +14,7 @@ const bare = new Server('/bare/', '');
 const serve = new nodeStatic.Server('static/');
 const fakeServe = new nodeStatic.Server('BlacklistServe/');
 const server = http.createServer();
-var io = require('socket.io');
-io = io.listen(server);
 console.log("working");
-
-io.on('connection', (socket) => {
-    console.log('a user connected');
-});
 
 server.on('request', (request, response) => {
     const ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
