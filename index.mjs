@@ -14,6 +14,10 @@ const bare = new Server('/bare/', '');
 const serve = new nodeStatic.Server('static/');
 const fakeServe = new nodeStatic.Server('BlacklistServe/');
 const server = http.createServer();
+var io = require('socket.io')(server);
+io.on('connection', function(socket){
+    console.log('A user connected');
+});
 console.log("working");
 
 server.on('request', (request, response) => {
