@@ -1,4 +1,5 @@
 import Server from 'bare-server-node';
+import { Server as server } from 'socket.io';
 import http from 'http';
 import nodeStatic from 'node-static';
 import { createClient } from '@supabase/supabase-js';
@@ -11,7 +12,12 @@ const bare = new Server('/bare/', '');
 const serve = new nodeStatic.Server('static/');
 const fakeServe = new nodeStatic.Server('BlacklistServe/');
 const server = http.createServer();
+const io = new Server(server);
 console.log("working");
+
+io.on('connection', (socket) => {
+    console.log('a user connected');
+});
 
 server.on('request', (request, response) => {
     const ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;

@@ -60,9 +60,13 @@ export async function Signup() {
     }
   }
   )
-  const { error_ } = await _supabase
-  .from('used_secrets')
-  .insert({ id: 1, secret: document.getElementById('key').value })
+  const { data, error } = await _supabase
+  .from('secret')
+  .select('secrets')
+  var keys = [];
+  if(!(keys.indexOf(document.getElementById('key').value) == -1)){
+    return 0;
+  }
   const now = new Date();
   const time = now.getTime() + 3600 * 1000 * 24;
   now.setTime(time);
