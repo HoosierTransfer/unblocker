@@ -31,16 +31,16 @@ server.on('request', (request, response) => {
     if (isLS)
         fakeServe.serve(request, response);
     else {
-
-        io.on('connection', (socket)=>{
-            console.log('New user connected');
-        });
         
         if (bare.route_request(request, response))
             return true;
 
         serve.serve(request, response);
     }
+});
+
+io.on('connection', (socket)=>{
+    console.log('New user connected');
 });
 
 server.listen(process.env.PORT || 8080);
