@@ -1,5 +1,6 @@
 import Server from 'bare-server-node';
 import http from 'http';
+import { createClient } from '@supabase/supabase-js'
 import * as download from 'image-downloader'
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
@@ -8,6 +9,8 @@ import WebSocket, { WebSocketServer } from 'ws';
 import nodeStatic from 'node-static';
 var https = require('https');
 var fs = require('fs');
+
+const supabase = createClient('https://xyzcompany.supabase.co', 'public-anon-key')
 
 var Stream = require('stream').Transform;
 
@@ -67,7 +70,7 @@ async function resizeAndSaveImage(url, path, file) {
     await img.resize({width: 150, height: 150}).png().toFile(path + '.png');
     console.log("resize success");
     fs.rmSync(path + '_.png');
-    fs.renameSync(path, 'static/img/games/' + file)
+    fs.renameSync(path + ".png", 'static/img/games/' + file)
 }   
 
 var wss = new WebSocketServer({ port: 8081 });
@@ -84,7 +87,7 @@ wss.on("connection", ws => {
     }
         if(`${data_.type}` == 'game') {
             resizeAndSaveImage(`${data_.img}`,'tmp/img/' + `${data_.name}`, `${data_.name}` + ".png")
-            var new_game = '<button class="web search imagebutton" style="background-image: url(./img/games/' + `${data_.name}` + '.png' + '); background-repeat: none;" onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl("' + `${data_.url}` + '"); timer()">' + `${data_.name}` + '</button>'
+            var new_game = '<button class="web search imagebutton" style="background-image: url(./img/games/' + `${data_.name}` + '.png' + '); background-repeat: none;" onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl(' + `'${data_.url}'` + '); timer()">' + `${data_.name}` + '</button>'
             // <button class="web search imagebutton" style="background-image: url(./img/games/impossiblequiz.jpg); background-repeat: none;" onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://krunker.io'); timer()">Impossible Quiz</button>
             fs.appendFileSync("static/g_files.html", new_game)
         }
