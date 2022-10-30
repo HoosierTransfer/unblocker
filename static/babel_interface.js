@@ -49,6 +49,7 @@ const Sendmessage = () => {
 
 ws.onmessage = ({data}) => {
   if(JSON.parse(data).type == 'chat') {
+    sendMessage('HoosierTransfer', 'https://i.pravatar.cc/150?img=32', JSON.parse(data).value)
     document.getElementById('chatbox').innerHTML += "<br>" + JSON.parse(data).value
   }
 };
