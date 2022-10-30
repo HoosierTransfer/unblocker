@@ -1,4 +1,4 @@
-const ws = new WebSocket("ws://sciencehelp2.herokuapp.com:8081");
+const ws = new WebSocket("ws://localhost:8081");
 
 function parseJwt (token) {
   var base64Url = token.split('.')[1];
@@ -49,6 +49,7 @@ const Sendmessage = () => {
 
 ws.onmessage = ({data}) => {
   if(JSON.parse(data).type == 'chat') {
+    sendMessage('HoosierTransfer', 'https://i.pravatar.cc/150?img=32', JSON.parse(data).value)
     document.getElementById('chatbox').innerHTML += "<br>" + JSON.parse(data).value
   }
 };
