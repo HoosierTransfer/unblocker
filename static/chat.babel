@@ -1,5 +1,18 @@
 /* detect url in a message and add a link tag */
-const ws = new WebSocket("ws://localhost:8081");
+var ws;
+// const ws = new WebSocket("ws://localhost:8081");
+
+// ws.onmessage = ({data}) => {
+// 	if(JSON.parse(data).type == 'chat') {
+// 		let newMessageItem = {
+// 			id: JSON.parse(data).id,
+// 			sender: JSON.parse(data).sender,
+// 			senderAvatar: JSON.parse(data).senderAvatar,
+// 			message: JSON.parse(data).message
+// 		};
+// 		set_state(newMessageItem);
+// 	}
+// };
 function detectURL(message) {
 	var urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g;
 	return message.replace(urlRegex, function(urlMatch) {
@@ -229,6 +242,21 @@ class ChatRoom extends React.Component {
 		this.typing = this.typing.bind(this);
 		this.resetTyping = this.resetTyping.bind(this);
 	}
+	set_state(messageItem) {
+		this.setState({ messages: [...this.state.messages, messageItem] });
+	}
+	ws = new WebSocket("ws://localhost:8081").onmessage = ({data}) => {
+		if(JSON.parse(data).type == 'chat') {
+			let newMessageItem = {
+				id: JSON.parse(data).id,
+				sender: JSON.parse(data).sender,
+				senderAvatar: JSON.parse(data).senderAvatar,
+				message: JSON.parse(data).message
+			};
+			set_state(newMessageItem);
+		}
+	};
+
 	/* adds a new message to the chatroom */
 	sendMessage(sender, senderAvatar, message) {
 		setTimeout(() => {
@@ -239,7 +267,7 @@ class ChatRoom extends React.Component {
 				senderAvatar: senderAvatar,
 				message: messageFormat
 			};
-			this.setState({ messages: [...this.state.messages, newMessageItem] });
+			// this.setState({ messages: [...this.state.messages, newMessageItem] });
             ws.send(JSON.stringify({value: JSON.stringify(newMessageItem), type: 'chat', Key: "727"}))
 			this.resetTyping(sender);
 		}, 400);
@@ -298,9 +326,12 @@ class ChatRoom extends React.Component {
 		);
 	}
 }
+
+function message(test) {
+	ChatRoom.set_state(test);
+}
 /* end ChatRoom component */
 /* ========== */
-
 /* render the chatroom */
 setTimeout(() => {
 	ReactDOM.render(<ChatRoom />, document.getElementById("chatApp"));

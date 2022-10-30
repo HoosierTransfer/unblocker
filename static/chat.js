@@ -1,7 +1,46 @@
 "use strict";
+function parseJwt (token) {
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
 
+  return JSON.parse(jsonPayload);
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 /* detect url in a message and add a link tag */
-const ws = new WebSocket("ws://localhost:8081");
+var ws;
+// const ws = new WebSocket("ws://localhost:8081");
+
+// ws.onmessage = ({data}) => {
+// 	if(JSON.parse(data).type == 'chat') {
+// 		let newMessageItem = {
+// 			id: JSON.parse(data).id,
+// 			sender: JSON.parse(data).sender,
+// 			senderAvatar: JSON.parse(data).senderAvatar,
+// 			message: JSON.parse(data).message
+// 		};
+// 		set_state(newMessageItem);
+// 	}
+// };
 function detectURL(message) {
   var urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g;
   return message.replace(urlRegex, function (urlMatch) {
@@ -218,6 +257,20 @@ class ChatBox extends React.Component {
 class ChatRoom extends React.Component {
   constructor(props, context) {
     super(props, context);
+    // _defineProperty(this, "ws", new WebSocket("ws://localhost:8081").onmessage = ({
+    //   data
+    // }) => {
+    //   if (JSON.parse(data).type == 'chat') {
+    //     let newMessageItem = {
+    //       id: JSON.parse(data).id,
+    //       sender: JSON.parse(data).sender,
+    //       senderAvatar: JSON.parse(data).senderAvatar,
+    //       message: JSON.parse(data).message
+    //     };
+    //     set_state(newMessageItem);
+    //   }
+    // });
+    
     this.state = {
       messages: [],
       isTyping: []
@@ -226,8 +279,29 @@ class ChatRoom extends React.Component {
     this.typing = this.typing.bind(this);
     this.resetTyping = this.resetTyping.bind(this);
   }
+  set_state(messageItem) {
+    this.setState({
+      messages: [...this.state.messages, messageItem]
+    });
+  }
+  
   /* adds a new message to the chatroom */
   sendMessage(sender, senderAvatar, message) {
+    ws = new WebSocket("ws://localhost:8081");
+    ws.onmessage = ({data}) => {
+      if(JSON.parse(data).type == 'chat') {
+        let newMessageItem = {
+          id: this.state.messages.length + 1,
+          sender: JSON.parse(data).sender,
+          senderAvatar: JSON.parse(data).senderAvatar,
+          message: JSON.parse(data).message
+        };
+        this.setState({ messages: [...this.state.messages, newMessageItem] });
+        ws.onmessage = ({data}) => {
+          
+        };
+      }
+    };
     setTimeout(() => {
       let messageFormat = detectURL(message);
       let newMessageItem = {
@@ -236,25 +310,38 @@ class ChatRoom extends React.Component {
         senderAvatar: senderAvatar,
         message: messageFormat
       };
-      this.setState({
-        messages: [...this.state.messages, newMessageItem]
-      });
+      console.log(JSON.stringify({value: JSON.stringify(newMessageItem), type: 'chat', Key: "727"}));
+      //this.setState({ messages: [...this.state.messages, newMessageItem] });
       ws.send(JSON.stringify({
         value: JSON.stringify(newMessageItem),
         type: 'chat',
-        Key: "727"
+        Key_: "727"
       }));
       this.resetTyping(sender);
     }, 400);
   }
   /* updates the writing indicator if not already displayed */
   typing(writer) {
+    ws = new WebSocket("ws://localhost:8081");
+    ws.onmessage = ({data}) => {
+      if(JSON.parse(data).type == 'chat_typing') {
+        this.setState({
+          isTyping: stateTyping
+        });
+        ws.onmessage = ({data}) => {
+          
+        };
+      }
+    };
     if (!this.state.isTyping[writer]) {
       let stateTyping = this.state.isTyping;
       stateTyping[writer] = true;
-      this.setState({
-        isTyping: stateTyping
-      });
+      ws.send(JSON.stringify({
+        type: 'chat_typing'
+      }));
+      // this.setState({
+      //   isTyping: stateTyping
+      // });
     }
   }
   /* hide the writing indicator */
@@ -273,16 +360,34 @@ class ChatRoom extends React.Component {
     let sendMessage = this.sendMessage;
     let typing = this.typing;
     let resetTyping = this.resetTyping;
+    // .slice(0, n).concat(arrayOfLetters.slice(n+1))
+    
+
+
+    // ws.addEventListener('open', function (event) {
+    //   console.log('connected');
+    //   ws = new WebSocket("ws://localhost:8081");
+    //   ws.onmessage = ({data}) => {
+    //     if(JSON.parse(data).type == 'user_join') {
+    //       ws.onmessage = ({data}) => {
+    //         users = JSON.parse(data).user;
+    //       };
+    //     }
+    //   };
+    //   ws.send(JSON.stringify({type: 'user_join', name: getCookie('username'), avatar: getCookie('user_avatar')}));
+    // });
+
+    users[0] = {name: getCookie('username'), avatar: getCookie('user_avatar')};
 
     /* user details - can add as many users as desired */
-    users[0] = {
-      name: 'Shun',
-      avatar: 'https://i.pravatar.cc/150?img=32'
-    };
-    users[1] = {
-      name: 'Gabe',
-      avatar: 'https://i.pravatar.cc/150?img=56'
-    };
+    // users[0] = {
+    //   name: 'Shun',
+    //   avatar: 'https://i.pravatar.cc/150?img=32'
+    // };
+    // users[1] = {
+    //   name: 'Gabe',
+    //   avatar: 'https://i.pravatar.cc/150?img=56'
+    // };
     /* test with two other users :)
     users[2] = { name: 'Kate', avatar: 'https://i.pravatar.cc/150?img=47' };
     users[3] = { name: 'Patrick', avatar: 'https://i.pravatar.cc/150?img=14' };
@@ -291,6 +396,7 @@ class ChatRoom extends React.Component {
     /* creation of a chatbox for each user present in the chatroom */
     Object.keys(users).map(function (key) {
       var user = users[key];
+      if(true) {
       chatBoxes.push( /*#__PURE__*/React.createElement(ChatBox, {
         key: key,
         owner: user.name,
@@ -300,26 +406,22 @@ class ChatRoom extends React.Component {
         resetTyping: resetTyping,
         messages: messages,
         isTyping: isTyping
+        
       }));
+    }
     });
+    
     return /*#__PURE__*/React.createElement("div", {
       className: "chatApp__room"
     }, chatBoxes);
   }
 }
+function message(test) {
+  ChatRoom.set_state(test);
+}
 /* end ChatRoom component */
 /* ========== */
-
 /* render the chatroom */
 setTimeout(() => {
   ReactDOM.render( /*#__PURE__*/React.createElement(ChatRoom, null), document.getElementById("chatApp"));
 }, 400);
-
-ws.onmessage = ({data}) => {
-    if(JSON.parse(data).type == 'chat') {
-      document.getElementById('chatbox').innerHTML += "<br>" + JSON.parse(data).value
-      this.setState({
-        messages: [...this.state.messages, newMessageItem]
-      });
-    }
-};

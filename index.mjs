@@ -1,7 +1,7 @@
 import Server from 'bare-server-node';
 import http from 'http';
 import * as download from 'image-downloader'
-import { createRequire } from "module";
+import { createRequire, findSourceMap } from "module";
 const require = createRequire(import.meta.url);
 const sharp = require('sharp');
 const crypto = require('crypto')
@@ -11,6 +11,7 @@ var https = require('https');
 var fs = require('fs');
 var id = 0;
 var lookup = {};
+var users = {};
 const algorithm = 'aes-192-cbc';
 
 async function encrypted_chat(password, salt, text, client) {
@@ -130,9 +131,20 @@ wss.on("connection", ws => {
         var data_ = JSON.parse(data);
         if(`${data_.type}` == 'chat') {
         wss.clients.forEach(client=>{
-            if(client.readyState === WebSocket.OPEN && `${data_.type}` == 'chat')
+            if(client.readyState === WebSocket.OPEN && `${data_.type}` == 'chat') {
                 // var enc = encrypted_chat(`${data_.username}` + `: ` + `${data_.value}`, '727wysi', `${data_.value}`, client); 
                 console.log(`${data_.value}`); 
+                var parsed = JSON.parse(`${data_.value}`);
+                ws.send(JSON.stringify({id: parsed.id, sender: parsed.sender, senderAvatar: parsed.senderAvatar, message: parsed.message, type: 'chat'}))
+                ws.close();
+            }
+            if(client.readyState === WebSocket.OPEN && `${data_.type}` == 'chat_typing') {
+                console.log('typing');
+            }
+            if(client.readyState === WebSocket.OPEN && `${data_.type}` == 'user_join') {
+                users[users.length + 1] = JSON.stringify({name: `${data_.name}`, avatar:`${data_.avatar}`});
+                ws.send(JSON.stringify({user: users, type: 'user_join'}))
+            }
         })
     }
         if(`${data_.type}` == 'game') {
