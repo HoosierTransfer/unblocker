@@ -1,7 +1,7 @@
 "use strict";
 
 /* detect url in a message and add a link tag */
-const ws = new WebSocket("ws://localhost:8081");
+//const ws = new WebSocket("ws://localhost:8081");
 function detectURL(message) {
   var urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g;
   return message.replace(urlRegex, function (urlMatch) {
@@ -239,11 +239,11 @@ class ChatRoom extends React.Component {
       this.setState({
         messages: [...this.state.messages, newMessageItem]
       });
-      ws.send(JSON.stringify({
-        value: JSON.stringify(newMessageItem),
-        type: 'chat',
-        Key: "727"
-      }));
+      // ws.send(JSON.stringify({
+      //   value: JSON.stringify(newMessageItem),
+      //   type: 'chat',
+      //   Key: "727"
+      // }));
       this.resetTyping(sender);
     }, 400);
   }
@@ -315,11 +315,11 @@ setTimeout(() => {
   ReactDOM.render( /*#__PURE__*/React.createElement(ChatRoom, null), document.getElementById("chatApp"));
 }, 400);
 
-ws.onmessage = ({data}) => {
-    if(JSON.parse(data).type == 'chat') {
-      document.getElementById('chatbox').innerHTML += "<br>" + JSON.parse(data).value
-      this.setState({
-        messages: [...this.state.messages, newMessageItem]
-      });
-    }
-};
+// ws.onmessage = ({data}) => {
+//     if(JSON.parse(data).type == 'chat') {
+//       document.getElementById('chatbox').innerHTML += "<br>" + JSON.parse(data).value
+//       this.setState({
+//         messages: [...this.state.messages, newMessageItem]
+//       });
+//     }
+// };
