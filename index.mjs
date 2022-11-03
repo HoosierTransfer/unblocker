@@ -48,27 +48,27 @@ import nodeStatic from 'node-static';
 //     return false;
 // }
 
-var Stream = require('stream').Transform;
+// var Stream = require('stream').Transform;
 
-    var downloadImageFromURL = async (url, filename, callback) => {
+//     var downloadImageFromURL = async (url, filename, callback) => {
 
-    var client = http;
-    if (url.toString().indexOf("https") === 0) {
-        client = https;
-    }
+//     var client = http;
+//     if (url.toString().indexOf("https") === 0) {
+//         client = https;
+//     }
 
-    client.request(url, function(response) {
-        var data = new Stream();
+//     client.request(url, function(response) {
+//         var data = new Stream();
 
-        response.on('data', function(chunk) {
-            data.push(chunk);
-        });
+//         response.on('data', function(chunk) {
+//             data.push(chunk);
+//         });
 
-        response.on('end', function() {
-            fs.writeFileSync(filename, data.read());
-        });
-    }).end();
-};
+//         response.on('end', function() {
+//             fs.writeFileSync(filename, data.read());
+//         });
+//     }).end();
+// };
 
 
 const PORT = process.env.PORT || 8080;
