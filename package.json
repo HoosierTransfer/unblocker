@@ -2,7 +2,7 @@
   "dependencies": {
     "bare-server-node": "github:tomphttp/bare-server-node",
     "express": "^4.18.2",
-    "node-static": "^0.7.11",
+    "node-static": "^0.7.11"
   },
   "name": "science_help",
   "version": "1.0.0",
