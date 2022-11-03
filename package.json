@@ -6,9 +6,6 @@
   },
   "name": "science_help",
   "version": "1.0.0",
-  "engines": {
-    "node": "18.12.0"
-  },
   "description": "Online study resorces for science!",
   "main": "index.js",
   "scripts": {
