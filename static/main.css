@@ -30,7 +30,7 @@ body {
 /* Contains CSS for the Sidebar AKA: Navigation Bar */
 
 
-.sidebar {
+/* .sidebar {
     position: fixed;
     height: 100%;
     width: 78px;
@@ -59,7 +59,7 @@ body {
 .sidebar.active .logo_content .logo {
     opacity: 1;
     pointer-events: none;
-}
+} */
 
 .logo_content .logo i {
     font-size: 28px;
@@ -71,7 +71,7 @@ body {
     font-weight: 400;
 }
 
-.sidebar #btn {
+/* .sidebar #btn {
     position: absolute;
     color: var(--sidebarcolor2);
     left: 50%;
@@ -133,7 +133,7 @@ body {
 .sidebar.active .links_name {
     opacity: 1;
     pointer-events: auto;
-}
+} */
 
 /* Contains CSS for Content on the Homepage */
 
@@ -155,10 +155,10 @@ body {
     color: var(--textcolor);
 }
 
-.sidebar.active ~ .home_content {
+/* .sidebar.active ~ .home_content {
     width: calc(100% - 240px);
     left: 240px;
-}
+} */
 
 .home_content .wrapper {
     display: grid;
@@ -190,7 +190,7 @@ body {
     text-align: center;
 }
 
-.sidebar.active ~ .background_content {
+/* .sidebar.active ~ .background_content {
     width: calc(100% - 240px);
     left: 240px;
 }
@@ -198,7 +198,7 @@ body {
 
 .sidebar.active ~ .background_content .nav {
     left: 240px;
-}
+} */
 
 .background_content .nav {
     position: fixed;
