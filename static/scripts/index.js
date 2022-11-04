@@ -7,7 +7,7 @@ function sleep(ms) {
 async function a() {
 
 var client = new XMLHttpRequest();
-client.open('GET', '/sidebar.html');
+client.open('GET', '/sidebar2.0.html');
 client.onreadystatechange = function() {
   document.getElementById("menu_").innerHTML = client.responseText;
 }
