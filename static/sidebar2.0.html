@@ -1,0 +1,441 @@
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+:root {
+    --background: #3B4252;
+    --sidebarcolor1: #2E3440;
+    --sidebarcolor2: #D8DEE9;
+    --textcolor: #ECEFF4;
+}
+
+
+/* .sidebar {
+    position: fixed;
+    height: 100%;
+    width: 78px;
+    top: 0;
+    left: 0;
+    background: wheat;
+    padding: 6px 14px;
+    transition: all 0.25s ease;
+    border-radius: 15px;
+}
+
+.sidebar ul {
+    list-style-position: inside;
+    padding-left: 0;
+} */
+
+.ham {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 400ms;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transform: scale(1.25);
+  }
+  .hamRotate.active {
+    transform: rotate(45deg) scale(1.25);
+  }
+  .hamRotate180.active {
+    transform: rotate(180deg) scale(1.25);
+  }
+  .line {
+    fill:none;
+    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+    stroke: var(--sidebarcolor2);
+    stroke-width:5.5;
+    stroke-linecap:round;
+  }
+  .ham:hover .line {
+    stroke: var(--sidebarcolor1);
+  }
+
+  .ham4 .top {
+    stroke-dasharray: 40 121;
+  }
+  .ham4 .bottom {
+    stroke-dasharray: 40 121;
+  }
+  .ham4.active .top {
+    stroke-dashoffset: -68px;
+  }
+  .ham4.active .bottom {
+    stroke-dashoffset: -68px;
+  }
+
+.sidebar hr {
+    position: relative;
+    width: 75%;
+    height: 4px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    /* margin-right: 10px; */
+    margin-left: 10px;
+    border-width:0;
+    color:gray;
+    border-radius: 2px;
+    background-color:gray;
+}
+
+.sidebar span {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 18;
+    z-index: 9999;
+    color: var(--textcolor);
+    margin-left:12px;
+}
+
+/* .sidebar ul li {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin: 0px;
+    list-style: none;
+    line-height: 50px;
+}
+
+.sidebar a {
+    height: 500%;
+    width: 506%;
+    border-radius: 5px;
+    background-color: aliceblue;
+} */
+
+/* .sidebar ul li a {
+    color: var(--sidebarcolor2);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+    white-space: nowrap;
+} */
+
+i {
+    font-size: 32px;
+}
+
+.sidebar {
+    position: fixed;
+    height: 97.4%;
+    width: 75px;
+    background-color: wheat;
+    border-radius: 6px;
+    padding-top: 0;
+    text-align: center;
+    align-items: center;
+    position: fixed;
+    background: var(--sidebarcolor1);
+    /* padding: 6px 14px; */
+    transition: all 0.25s ease;
+}
+
+/* .sidebar.active {
+    width: 240px;
+}
+
+.sidebar .logo_content .logo {
+    color: var(--sidebarcolor2);
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.25s ease;
+}
+
+.sidebar.active .logo_content .logo {
+    opacity: 1;
+    pointer-events: none;
+}
+
+.logo_content .logo i {
+    font-size: 28px;
+    margin-right: 5px;
+}
+
+.logo_content .logo .logo_name {
+    font-size: 20px;
+    font-weight: 400;
+} */
+
+/* .sidebar #btn {
+    position: absolute;
+    color: var(--sidebarcolor2);
+    left: 50%;
+    top: 6px;
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    transform: translateX(-50%);
+}
+
+.sidebar.active #btn {
+    left: 90%;
+} */
+
+.sidebar ul {
+    /* margin-top: 20px; */
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+.sidebar ul li {
+    position: relative;
+    height: 50px;
+    width: 0%;
+    margin: 0 13px;
+    list-style: none;
+    line-height: 50px;
+}
+
+.sidebar ul li a {
+    color: var(--sidebarcolor2);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.1s ease;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.sidebar ul li a:hover {
+    color: var(--sidebarcolor1);
+    background: var(--sidebarcolor2);
+}
+
+.sidebar ul li i {
+    height: 50px;
+    min-width: 50px;
+    border-radius: 6px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.sidebar a {
+    height: 50px;
+    min-width: 50px;
+    border-radius: 6px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.boxa1 {
+    height: 50px;
+    min-width: 50px;
+    border-radius: 6px;
+    line-height: 50px;
+    text-align: center;
+    /* margin-top: 15px; */
+    margin-bottom: 15px;
+}
+.boxa {
+    height: 50px;
+    min-width: 50px;
+    border-radius: 6px;
+    line-height: 50px;
+    text-align: center;
+    /* margin-top: 15px; */
+    /* margin-bottom: 30px; */
+}
+
+.bar {
+    transition: 0.5s ease;
+}
+
+.bar:hover {
+    transform: rotate(90deg);
+}
+
+.container_ {  display: grid;
+    grid-template-columns: 50px 150px;
+    grid-template-rows: 50px;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "bar__ text_";
+      margin-bottom: 15px;
+      margin-top: 15px;
+  }
+  
+  .bar__ { grid-area: bar__; }
+  
+  .text_ { grid-area: text_;
+  text-align: left;  
+}
+
+.container__ {  display: grid;
+    grid-template-columns: 50px 150px;
+    grid-template-rows: 50px;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "bar__ text_";
+  }
+  
+  .bar__ { grid-area: bar__; }
+  
+  .text_ { grid-area: text_;
+  text-align: left;  
+}
+  
+
+.container {  display: grid;
+    grid-template-columns: 50px 150px;
+    grid-template-rows: 50px;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "bar_ Application";
+  }
+  
+  .bar_ { grid-area: bar_; }
+  
+  .Application { grid-area: Application; 
+    text-align: left;  }
+  
+        </style>
+
+        <!-- <script src="https://kit.fontawesome.com/6ff9b32dcc.js" crossorigin="anonymous"></script> -->
+        <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />        <div class="sidebar" id="sidebar">
+            <ul>
+                <li>
+                    <div class="container">
+                        <div class="bar_">
+                            <a onclick="toggle_bar()">
+                                <!-- <i class="fa-solid fa-bars bar" id="bars"></i> -->
+                                <svg class="ham hamRotate ham4" viewBox="0 0 100 100" width="80" onclick="this.classList.toggle('active')">
+                                    <path
+                                          class="line top"
+                                          id="path1"
+                                          d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+                                    <path
+                                          class="line middle"
+                                          id="path2"
+                                          d="m 70,50 h -40" />
+                                    <path
+                                          class="line bottom"
+                                          id="path3"
+                                          d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+                                          
+                                  </svg>
+                           </a>
+                        </div>
+                        <div class="Application" style="visibility: hidden;" id="app"><span>Science Help</span></div>
+                    </div>
+                    
+                </li>
+                <hr id="split">
+                <li>
+                    <div class="container__">
+                        <div class="bar__">
+                            <a class="boxa1">
+                                <i class="fa-regular fa-window"></i>
+                                <!-- <i class="fa-duotone fa-grid-2" style="font-size: 28;"></i> -->
+                            </a>
+                        </div>
+                        <div class="text_ hideText" style="visibility: hidden;"><span>Sites</span></div>
+                      </div>
+                </li>
+                <li>
+
+                    <div class="container_">
+                        <div class="bar__">
+                            <a class="boxa">
+                                <i class="fa-solid fa-gamepad-modern"></i>
+                            </a>
+                        </div>
+                        <div class="text_ hideText" style="visibility: hidden;"><span>Sites</span></div>
+                      </div>
+                </li>
+                <li>
+                    <div class="container_">
+                        <div class="bar__">
+                            <a class="boxa">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+                        </div>
+                        <div class="text_ hideText" style="visibility: hidden;"><span>Search</span></div>
+                      </div>
+                </li>
+                <li>
+                    <div class="container_">
+                        <div class="bar__">
+                            <a class="boxa">
+                                <i class="fa-brands fa-discord"></i>
+                            </a>
+                        </div>
+                        <div class="text_ hideText" style="visibility: hidden;"><span>Discord</span></div>
+                      </div>
+                </li>
+                <li>
+                    <div class="container_">
+                        <div class="bar__">
+                            <a class="boxa">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                        </div>
+                        <div class="text_ hideText" style="visibility: hidden;"><span>Youtube</span></div>
+                      </div>
+                </li>
+                <li>
+                    <div class="container_">
+                        <div class="bar__">
+                            <a class="boxa">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                        <div class="text_ hideText" style="visibility: hidden;"><span>Github</span></div>
+                      </div>
+                </li>
+
+                <li>
+                    <div class="container_">
+                        <div class="bar__">
+                            <a class="boxa">
+                                <i class="fa-solid fa-book"></i>
+                            </a>
+                        </div>
+                        <div class="text_ hideText" style="visibility: hidden;"><span>Terms</span></div>
+                      </div>
+                </li>
+            </ul>
+        </div>
+        <script>
+            var bar_toggled = false;
+            function toggle_bar() {
+                if(bar_toggled == false) {
+                    bar_toggled = true;
+                    //alert(432);
+                    document.getElementById("app").style = "visibility: visable;";
+                    document.getElementById("split").style = "width: 90%;";
+                    document.getElementById("sidebar").style = "width: 200px;";
+                    //document.getElementById("bars").className = "fa-solid fa-xmark bar";
+                    var menuElements = document.getElementsByClassName("hideText");
+
+
+                    for(var i = 0; i < menuElements.length; i++) {
+                        menuElements[i].style = "visibility: visable;";
+                    }
+                } else {
+                    bar_toggled = false;
+                    document.getElementById("app").style = "visibility: hidden;";
+                    document.getElementById("split").style = "width: 75%;";
+                    document.getElementById("sidebar").style = "width: 75px;";
+                    //document.getElementById("bars").className = "fa-solid fa-bars bar";
+
+                    var menuElements = document.getElementsByClassName("hideText");
+
+                    for(var i = 0; i < menuElements.length; i++) {
+                        menuElements[i].style = "visibility: hidden;";
+                    }
+                }
+            }
+        </script>
