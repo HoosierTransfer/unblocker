@@ -141,7 +141,7 @@ body {
     position: absolute;
     height: 100%;
     width: calc(100% - 78px);
-    left: 78px;
+    left: 75px;
     transition: all 0.25s ease;
     background: var(--background);
     background-repeat: no-repeat;
