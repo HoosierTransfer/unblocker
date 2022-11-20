@@ -7,7 +7,7 @@ function sleep(ms) {
 async function a() {
 
 var client = new XMLHttpRequest();
-client.open('GET', '/sidebar2.0.html');
+client.open('GET', '/sidebar.html');
 client.onreadystatechange = function() {
   document.getElementById("menu_").innerHTML = client.responseText;
 }
@@ -20,7 +20,7 @@ document.getElementById("random").innerHTML = client1.responseText;
 client1.send();
 }
 
-a();
+//a();
 
 const form = document.querySelector('form');
 const input = document.querySelector('input');
@@ -78,11 +78,9 @@ function makeloader(){
 	//Prepend Loader
 	const loader = document.createElement("loader");
 	loader.innerHTML = 
-	`<div id="loader-wrapper">
-  <div id="loader"></div>
-   
-	  <div class="loader-section section-left"></div>
-	  <div class="loader-section section-right"></div>
+	`  
+  <div id="loader-wrapper">
+  <div class="spinner"></div>
   </div>`;
 	document.body.prepend(loader);
   }

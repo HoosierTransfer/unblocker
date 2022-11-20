@@ -5,7 +5,51 @@
     width: 100%;
     height: 100%;
     z-index: 1000;
+    background-color: #31394d7e;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 1s cubic-bezier( 0.21, 0.77, 0.21, 0.77 );
 }
+
+.spinner {
+    width: 88px;
+    height: 88px;
+    display: grid;
+    margin: auto;
+    top: 50%;
+    right: 50%;
+    position: absolute;
+    transform: translate(50%, -50%);
+ }
+ 
+ .spinner::before,
+ .spinner::after {
+    content: "";
+    grid-area: 1/1;
+    background: var(--c) 50%  0, 
+         var(--c) 50%  100%, 
+         var(--c) 100% 50%, 
+         var(--c) 0    50%;
+    background-size: 21.1px 21.1px;
+    background-repeat: no-repeat;
+    animation: spinner-3hs4a3 1s infinite;
+ }
+ 
+ .spinner::before {
+    --c: radial-gradient(farthest-side,#81a1c1 92%,#0000);
+    margin: 7px;
+    background-size: 14.1px 14.1px;
+    animation-timing-function: linear;
+ }
+ 
+ .spinner::after {
+    --c: radial-gradient(farthest-side,#81a1c1 92%,#0000);
+ }
+ 
+ @keyframes spinner-3hs4a3 {
+    100% {
+       transform: rotate(.5turn);
+    }
+ }
 #loader {
     display: block;
     position: relative;
@@ -52,6 +96,11 @@
         -webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
           animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
     }
+
+    @keyframes fadeIn {
+        0% {opacity: 0;}
+        70% {opacity: 1;}
+     } 
 
     @-webkit-keyframes spin {
         0%   { 
