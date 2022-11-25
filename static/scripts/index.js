@@ -4,21 +4,25 @@ function sleep(ms) {
   });
 }
 
-async function a() {
+/**
+ * A function that loads the sidebar and g_files.html files.
+ * @returns None
+ */
+// async function a() {
 
-var client = new XMLHttpRequest();
-client.open('GET', '/sidebar.html');
-client.onreadystatechange = function() {
-  document.getElementById("menu_").innerHTML = client.responseText;
-}
-client.send();
-client1 = new XMLHttpRequest();
-client1.open('GET', '/g_files.html');
-client1.onreadystatechange = function() {
-document.getElementById("random").innerHTML = client1.responseText;
-}
-client1.send();
-}
+// var client = new XMLHttpRequest();
+// client.open('GET', '/sidebar.html');
+// client.onreadystatechange = function() {
+//   document.getElementById("menu_").innerHTML = client.responseText;
+// }
+// client.send();
+// client1 = new XMLHttpRequest();
+// client1.open('GET', '/g_files.html');
+// client1.onreadystatechange = function() {
+// document.getElementById("random").innerHTML = client1.responseText;
+// }
+// client1.send();
+// }
 
 //a();
 

@@ -7,6 +7,21 @@ const _supabase = createClient(
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4eWVncGRzbHJlbWZ2aXJ3dW5xIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjM3NzM0NjEsImV4cCI6MTk3OTM0OTQ2MX0.h0EMF5FCpam2-IpzANEozOv1WOQXzGNwI32QyG1ELjE'
 )
 
+function uuidv4() {
+  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+  );
+}
+
+async function addUUID(key, uuid) {
+  const { error } = await _supabase
+  .from('secret')
+  .update({ udid: uuid })
+  .eq('secrets', key)
+  return error;
+}
+
+
 
 export async function signIn() {
   if(!(document.getElementById('main').value == '' || document.getElementById('passwd').value == '')){
@@ -31,6 +46,19 @@ export async function signIn() {
   return 0;
 }
 
+
+async function keyUsed(key) {
+  const { data, error } = await _supabase
+  .from('UsedKeys')
+  .select('key')
+  for(let i = 0; i < data.length; i++) {
+    if(data[i].key == key) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export async function Signup() {
   const { data, error } = await _supabase
   .from('secret')
@@ -39,7 +67,7 @@ export async function Signup() {
   for(var i = 0; i < data.length; i++) {
     keys[i] = data[i].secrets;
   }
-  if(!(document.getElementById('main').value == '' || document.getElementById('passwd').value == '' || document.getElementById('key').value == '') && document.getElementById('passwd').value == document.getElementById('passwdconf').value && !(keys.indexOf(document.getElementById('key').value)==-1)){
+  if(!(document.getElementById('main').value == '' || document.getElementById('passwd').value == '' || document.getElementById('key').value == '') && document.getElementById('passwd').value == document.getElementById('passwdconf').value && !(keys.indexOf(document.getElementById('key').value)==-1) && !keyUsed((document.getElementById('key').value))){
   const { user, session, error } = await _supabase.auth.signUp({
     email: document.getElementById('main').value,
     password: document.getElementById('passwd').value,
@@ -49,6 +77,18 @@ export async function Signup() {
     }
   }
 })
+if(error == null) {
+  if(localStorage.getItem('uuid ') == null || localStorage.getItem('uuid ') == undefined) {
+  localStorage.setItem('uuid', uuidv4());
+  }
+}
+try {
+  if(localStorage.getItem('uuid ') == null || localStorage.getItem('uuid ') == undefined) {
+  addUUID(document.getElementById('key').value,)  
+  }
+} catch (e) {
+  document.innerHTML = e;
+}
   console.log(error)
   const now = new Date();
   const time = now.getTime() + 3600 * 1000 * 24;
@@ -68,3 +108,4 @@ export async function Signup() {
 }
 Replace("sciencehelp2.herokuapp.com");
 }
+keyUsed("test");

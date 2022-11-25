@@ -1,11 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
-:root {
+:root, [data-theme="default"] {
     --background: #3B4252;
+    --background0: #d8dee97f;
     --sidebarcolor1: #2E3440;
     --sidebarcolor2: #D8DEE9;
     --sidebarcolor75: #2E3440bf;
     --textcolor: #ECEFF4;
+}
+
+[data-theme="light"] {
+  --background: #D8DEE9;
+  --sidebarcolor1: #E5E9F0;
+  --sidebarcolor2: #434C5E;
+  --sidebarcolor75: #E5E9F0bf;
+  --textcolor: #4C566A;
 }
 
 body {
@@ -142,7 +151,7 @@ body {
     font-family: 'Quicksand', sans-serif;
     position: absolute;
     height: 100%;
-    width: calc(100% - 78px);
+    width: calc(100% - 75px);
     left: 75px;
     transition: all 0.25s ease;
     background: transparent;
@@ -405,19 +414,18 @@ i {
         height: 150px;
         }
         button:not(.inv){
-            background: linear-gradient(to right,#bf6a61 ,#bf616a);
             background-color: #bf616a;
             color: #eceff4;
             font-size: 14px;
             font-weight: 500;
             font-style: medium;
             text-decoration: none;
-            padding: 14px 0;
+            padding: 14px 10px;
             margin-left:25%;
             margin-right:25%;
             margin: 5px 5px;
-            border: 0px solid #000;
-            border-radius: 15px;
+            border: 2px solid #D08770;
+            border-radius: 10px;
             display: inline-block;
             transition: 0.1s ease;
             z-index: 0;
@@ -437,7 +445,16 @@ i {
     padding: 12px 15px;
     margin: 8px 0;
     width: 10%;
-  }
+}
+
+input {
+  background-color: var(--sidebarcolor2);
+  border: none;
+  border-radius: 5px;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 10%;
+}
 
 .searchuv {
   background-color: var(--sidebarcolor2);
@@ -484,4 +501,104 @@ i {
   margin: auto;
   text-align: left;
   color: var(--textcolor);
+}
+
+.settings_content {
+  font-family: 'Quicksand', sans-serif;
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 78px);
+  left: 78px;
+  transition: all 0.5s ease;
+  background: #00000000;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  text-align: center;
+}
+
+.settings_content h1 {
+  text-align: center;
+  margin-top: 7%;
+  font-size: 3em;
+  color: var(--textcolor);
+}
+
+.settings_content ul li {
+  height: 50px;
+  width: 100%;
+  margin: 0 5px;
+  list-style: none;
+  line-height: 50px;
+}
+
+.settings_content ul li a {
+  color: var(--sidebarcolor2);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.settings_content ul li a:hover {
+  color: var(--sidebarcolor1);
+  background: var(--sidebarcolor2);
+}
+
+.settings_content ul li a i {
+  height: 50px;
+  min-width: 50px;
+  border-radius: 12px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.settings_content h1 {
+  text-align: center;
+  margin-top: 7%;
+  font-size: 3em;
+  color: var(--textcolor);
+}
+
+.settings_content h2 {
+  margin-top: 20px;
+  font-size: 40px;
+  color: var(--textcolor);
+}
+
+.settings_content h3 {
+  margin-top: 40px;
+  font-size: 40px;
+  color: var(--textcolor);
+}
+
+.settings_content select {
+  margin-top: 10px;
+  width: 150px;
+  height: 25px;
+  border-radius: 5px;
+}
+
+
+
+input {
+  color: var(--sidebarcolor1);
+}
+
+.main_content {
+  border-radius: 10px;
+  background-color: var(--background0);
+  font-family: 'Quicksand', sans-serif;
+  position: absolute;
+  top: 72px;
+  bottom: 144px;
+  height: calc(100% - 144px);
+  width: calc(100% - 222px);
+  left: 150px;
+  right: 72px;
+  transition: all 0.25s ease;
+  background-size: 100%;
+  z-index: 0;
+  backdrop-filter: blur(2px);
 }
