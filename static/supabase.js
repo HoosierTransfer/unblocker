@@ -18,6 +18,7 @@ async function addUUID(key, uuid) {
   .from('secret')
   .update({ udid: uuid })
   .eq('secrets', key)
+  localStorage.setItem('uuid', uuid);
   return error;
 }
 
@@ -67,6 +68,7 @@ export async function Signup() {
   for(var i = 0; i < data.length; i++) {
     keys[i] = data[i].secrets;
   }
+  alert('working')
   if(!(document.getElementById('main').value == '' || document.getElementById('passwd').value == '' || document.getElementById('key').value == '') && document.getElementById('passwd').value == document.getElementById('passwdconf').value && !(keys.indexOf(document.getElementById('key').value)==-1) && !keyUsed((document.getElementById('key').value))){
   const { user, session, error } = await _supabase.auth.signUp({
     email: document.getElementById('main').value,
@@ -77,15 +79,16 @@ export async function Signup() {
     }
   }
 })
-if(error == null) {
-  if(localStorage.getItem('uuid ') == null || localStorage.getItem('uuid ') == undefined) {
-  localStorage.setItem('uuid', uuidv4());
-  }
-}
+// if(error == null) {
+//   if(localStorage.getItem('uuid ') == null || localStorage.getItem('uuid ') == undefined) {
+//   var uuid = uuidv4();
+//   localStorage.setItem('uuid', uuid);
+//   }
+// }
 try {
-  if(localStorage.getItem('uuid ') == null || localStorage.getItem('uuid ') == undefined) {
-  addUUID(document.getElementById('key').value,)  
-  }
+  if(localStorage.getItem('uuid ') == null) {
+  console.log(addUUID(document.getElementById('key').value, uuidv4()))
+}
 } catch (e) {
   document.innerHTML = e;
 }
@@ -106,6 +109,5 @@ try {
   document.getElementById("main").className = "error";
   console.log("rip");
 }
-Replace("sciencehelp2.herokuapp.com");
 }
-keyUsed("test");
+console.log(keyUsed("test"));
