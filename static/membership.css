@@ -11,6 +11,31 @@ body
 }
 
 
+
+.button1 {
+    border: 2px solid rgb(200,200,200);
+    border-radius: 7.5px;
+    margin-top: 1em;
+    padding: 1em 2em 1em 2em;
+    color: rgb(200,200,200);
+    font-weight: bold;
+    background-color: rgb(30,30,30);
+    box-shadow: inset 0px 0px 2em rgba(0, 0, 0, 0.3);
+    position: absolute;
+    left: 87%;
+}
+.button2 {
+    border: 2px solid rgb(200,200,200);
+    border-radius: 7.5px;
+    margin-top: 1em;
+    padding: 1em 2em 1em 2em;
+    color: rgb(200,200,200);
+    font-weight: bold;
+    background-color: rgb(30,30,30);
+    box-shadow: inset 0px 0px 2em rgba(0, 0, 0, 0.3);
+    position: absolute;
+    left: 93%;
+}
   
 
 .card1 {
@@ -85,7 +110,7 @@ body
     border-radius: 1000000px;
     color: rgb(239, 239, 239);
     font-weight: bold;
-    background-image: linear-gradient(45deg, #88C0D0 0%, #5E81AC 100%);
+    background: linear-gradient(180deg, #2E3440 0%, #4C566A 100%);
     transition: box-shadow 0.15s ease-in-out;
    }
    
@@ -171,7 +196,7 @@ body
     border-radius: 1000000px;
     color: rgb(239, 239, 239);
     font-weight: bold;
-    background-image: linear-gradient(45deg,  #88C0D0 0%, #5E81AC 100%);
+    background: linear-gradient(180deg, #2E3440 0%, #4C566A 100%);
     transition: box-shadow 0.15s ease-in-out;
    }
    
@@ -259,7 +284,7 @@ body
     border-radius: 1000000px;
     color: rgb(239, 239, 239);
     font-weight: bold;
-    background-image: linear-gradient(45deg, #88C0D0 0%, #5E81AC 100%);
+    background: linear-gradient(180deg, #2E3440 0%, #4C566A 100%);
     transition: box-shadow 0.15s ease-in-out;
    }
    

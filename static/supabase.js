@@ -43,7 +43,7 @@ export async function signIn() {
   document.getElementById("container").innerHTML = "<div class='container' id='container'> <div class='form-container log-in-container'> <form action='#'> <h1>Login</h1> <!-- <div class='social-container'> <div onclick='signInWithGithub()'> <i class='fa-brands fa-github fa-2xl'></i> </div>				 --> </div> <input type='email' placeholder='Wrong email or password' id='main'/> <input type='password' placeholder='Password' id='passwd'/> <a href='#'>Forgot your password?</a> <button onclick='signIn()'>Log In</button> </form> </div> <div class='overlay-container'> <div class='overlay'> <div class='overlay-panel overlay-right'> <h1>Science Help</h1> <p>Get help with science for free!</p> </div> </div> </div>";
   document.getElementById("main").className = "error";
   console.log("rip");
-  replace("sciencehelp2.herokuapp.com");
+  window.replace();
   return 0;
 }
 
@@ -51,7 +51,7 @@ export async function signIn() {
 async function keyUsed(key) {
   const { data, error } = await _supabase
   .from('UsedKeys')
-  .select('key')
+  .select()
   for(let i = 0; i < data.length; i++) {
     if(data[i].key == key) {
       return true;
@@ -60,16 +60,25 @@ async function keyUsed(key) {
   return false;
 }
 
+async function makeKeyUsed(key) {
+  const { error } = await _supabase
+  .from('UsedKeys')
+  .insert({ key: key })
+}
+
 export async function Signup() {
   const { data, error } = await _supabase
   .from('secret')
-  .select('secrets')
+  .select()
   var keys = [];
   for(var i = 0; i < data.length; i++) {
     keys[i] = data[i].secrets;
   }
-  alert('working')
-  if(!(document.getElementById('main').value == '' || document.getElementById('passwd').value == '' || document.getElementById('key').value == '') && document.getElementById('passwd').value == document.getElementById('passwdconf').value && !(keys.indexOf(document.getElementById('key').value)==-1) && !keyUsed((document.getElementById('key').value))){
+  if(document.getElementById('passwd').value.length < 8) {
+    alert('Passwords must be at least 8 characters')
+    return;
+  }
+  if(!(document.getElementById('main').value === '' || document.getElementById('passwd').value === '' || document.getElementById('key').value === '') && document.getElementById('passwd').value == document.getElementById('passwdconf').value && keys.indexOf(document.getElementById('key').value)!=-1){
   const { user, session, error } = await _supabase.auth.signUp({
     email: document.getElementById('main').value,
     password: document.getElementById('passwd').value,
@@ -79,6 +88,7 @@ export async function Signup() {
     }
   }
 })
+alert('working')
 // if(error == null) {
 //   if(localStorage.getItem('uuid ') == null || localStorage.getItem('uuid ') == undefined) {
 //   var uuid = uuidv4();
@@ -110,4 +120,8 @@ try {
   console.log("rip");
 }
 }
-console.log(keyUsed("test"));
+async function main() {
+  await makeKeyUsed('level2');
+}
+
+main()

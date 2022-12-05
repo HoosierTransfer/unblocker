@@ -600,5 +600,6 @@ input {
   transition: all 0.25s ease;
   background-size: 100%;
   z-index: 0;
+  -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
 }
