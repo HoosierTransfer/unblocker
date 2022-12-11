@@ -4,37 +4,32 @@
 	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0"></script>
 	<link rel="stylesheet" href="style.css">
 	<script src="https://kit.fontawesome.com/6ff9b32dcc.js" crossorigin="anonymous"></script>
-	<title>Log In</title>
-</head>
-<body>
-	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0"></script>
 	<script type="module" src="supabase.js"></script>
 	<script type="module">
 		import { signIn } from "./supabase.js";
 		window.Signin = signIn;
 	  </script>
+	<title>Log In</title>
+</head>
+<body>
 	<div class="container" id="container">
 		<div class="form-container log-in-container">
 			<form action="#">
+				<h1 style="font-size: 30px; top:10px; margin-bottom: 10px;">Science Help</h1>
 				<h1>Login</h1>
-				<!-- <div class="social-container">
-					<div onclick="signInWithGithub()">
-                    <i class="fa-brands fa-github fa-2xl"></i>
-				</div>				 -->
 				<input type="email" placeholder="Email" id="main"/>
 				<input type="password" placeholder="Password" id="passwd"/>
 				<a href="#">Forgot your password?</a>
 				<button type="button" onclick="Signin()">Log In</button>
 			</form>
 		</div>
-		<div class="overlay-container">
+		<!-- <div class="overlay-container">
 			<div class="overlay">
 				<div class="overlay-panel overlay-right">
 					<h1>Science Help</h1>
-					<p>Get help with science for free!</p>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </body>
 </html>

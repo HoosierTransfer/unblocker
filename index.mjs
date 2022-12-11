@@ -1,9 +1,21 @@
 import Server from 'bare-server-node';
 import http from 'http';
+// import * as download from 'image-downloader'
+import { createRequire, findSourceMap } from "module";
+const require = createRequire(import.meta.url);
+// const sharp = require('sharp');
+const crypto = require('crypto')
+import WebSocket, { WebSocketServer } from 'ws';
 import nodeStatic from 'node-static';
+var https = require('https');
+var fs = require('fs');
+var id = 0;
+var lookup = {};
+var users = {};
+const algorithm = 'aes-192-cbc';
 
 
-// async function encrypted_chat(password, salt, text, client) {
+// async function chat(password, salt, text, client) {
 //     //const encIv = crypto.createHash('sha256').update(iv).digest('hex').substring(0,16)
 //     const salt_ = crypto.createHash('sha256').update(salt).digest('hex').substring(0,16)
 //     var cipher;
@@ -16,6 +28,9 @@ import nodeStatic from 'node-static';
 //     console.log(encrypted.toString('hex'))
 //     return encrypted.toString('hex');
 // }
+async function chat(client, text) {
+    client.send(JSON.stringify({value: text, type: 'chat'}));
+}
 
 // async function signUp(email_, password_, key) {
 //     const { data_, error1 } = await supabase.from(keys).select();
@@ -108,41 +123,46 @@ server.listen(process.env.PORT || 8080);
 //     fs.renameSync(path + ".png", 'static/img/games/' + file)
 // }   
 
-// var wss = new WebSocketServer({ port: 8081 });
+var wss = new WebSocketServer({ port: 8081 });
 
-// wss.on("connection", ws => {
+wss.on("connection", ws => {
 
-//     ws.id = id++;
-//     lookup[ws.id] = ws;
-//     // sending message
-//     ws.on("message", (data) => {
-//         var data_ = JSON.parse(data);
-//         if(`${data_.type}` == 'chat') {
-//         wss.clients.forEach(client=>{
-//             if(client.readyState === WebSocket.OPEN && `${data_.type}` == 'chat')
-//                 // var enc = encrypted_chat(`${data_.username}` + `: ` + `${data_.value}`, '727wysi', `${data_.value}`, client); 
-//                 console.log(`${data_.value}`); 
-//         })
-//     }
-//         if(`${data_.type}` == 'game') {
-//             resizeAndSaveImage(`${data_.img}`,'tmp/img/' + `${data_.name}`, `${data_.name}` + ".png")
-//             var new_game = '<button class="web search imagebutton" style="background-image: url(./img/games/' + `${data_.name}` + '.png' + '); background-repeat: none;" onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl(' + `'${data_.url}'` + '); timer()">' + `${data_.name}` + '</button>'
-//             // <button class="web search imagebutton" style="background-image: url(./img/games/impossiblequiz.jpg); background-repeat: none;" onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://krunker.io'); timer()">Impossible Quiz</button>
-//             fs.appendFileSync("static/g_files.html", new_game)
-//         }       
-//     });
+    ws.id = id++;
+    lookup[ws.id] = {socket: ws, username: 'anon'};
+    // sending message
+    ws.on("message", (data) => {
+        var data_ = JSON.parse(data);
+        if(`${data_.type}` == 'connected') {
+            lookup[ws.id].username = `${data_.value}`;
+        }
+        if(`${data_.type}` == 'chat') {
+        wss.clients.forEach(client=>{
+            if(client.readyState === WebSocket.OPEN && `${data_.type}` == 'chat')
+                // var enc = encrypted_chat(`${data_.value}`, '727wysi', `${data_.value}`, client); 
+                chat(client, lookup[ws.id].username);
+                // client.send(JSON.stringify({value: `${data_.value}`, type: 'chat'}));
+                console.log(`${data_.value}`); 
+        })
+    }
+        if(`${data_.type}` == 'game') {
+            resizeAndSaveImage(`${data_.img}`,'tmp/img/' + `${data_.name}`, `${data_.name}` + ".png")
+            var new_game = '<button class="web search imagebutton" style="background-image: url(./img/games/' + `${data_.name}` + '.png' + '); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl(' + `'${data_.url}'` + '); timer()">' + `${data_.name}` + '</button>'
+            // <button class="web search imagebutton" style="background-image: url(./img/games/impossiblequiz.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://krunker.io'); timer()">Impossible Quiz</button>
+            fs.appendFileSync("static/g_files.html", new_game)
+        }       
+    });
 
-//     ws.on('close', function () {
-//         delete lookup[ws.id]
-//     });
-//     // handling client connection error
-//     ws.onerror = function () {
-//         console.log("Some Error occurred")
-//     }
-// });
+    ws.on('close', function () {
+        delete lookup[ws.id]
+    });
+    // handling client connection error
+    ws.onerror = function () {
+        console.log("Some Error occurred")
+    }
+});
 
-// function sleep(ms) {
-//     return new Promise((resolve) => {
-//       setTimeout(resolve, ms);
-//     });
-//   }
+function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  }

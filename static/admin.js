@@ -1,4 +1,4 @@
-const ws = new WebSocket("ws://sciencehelp2.herokuapp.com:8081");
+const ws = new WebSocket("ws://localhost:8081");
 
 function parseJwt (token) {
   var base64Url = token.split('.')[1];

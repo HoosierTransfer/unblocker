@@ -1,16 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
 
 * {
 	box-sizing: border-box;
 }
 
 body {
-	background: #f3e0e2;
+	background: #434C5E;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
+	/* font-family: 'Montserrat', sans-serif; */
+	font-family: 'Comfortaa';font-size: 22px;
 	height: 100vh;
 	margin: -20px 0 50px;
 }
@@ -18,6 +20,9 @@ body {
 h1 {
 	font-weight: bold;
 	margin: 0;
+	color: #333;
+	top: 25%;
+	left: 15%;
 }
 
 p {
@@ -26,6 +31,7 @@ p {
 	line-height: 20px;
 	letter-spacing: 0.5px;
 	margin: 20px 0 30px;
+	color: #333;
 }
 
 span {
@@ -41,8 +47,8 @@ a {
 
 button {
 	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
+	border: 0px solid #333;
+	background-color: #D08770;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -62,6 +68,7 @@ form {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+	width: 384px;;
 	padding: 0 50px;
 	height: 100%;
 	text-align: center;
@@ -88,12 +95,13 @@ input {
   }
 
 .container {
+	/* text-align: center; */
 	background-color: #fff;
 	border-radius: 10px;
   	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
 	overflow: hidden;
-	width: 768px;
+	width: 384px;
 	max-width: 100%;
 	min-height: 480px;
 }
@@ -121,9 +129,8 @@ input {
 
 
 .overlay {
-	background: #FF416C;
-	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	/* background: #FF416C; */
+	background-color: #D8DEE9;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
