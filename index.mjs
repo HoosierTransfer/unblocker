@@ -146,8 +146,8 @@ wss.on("connection", ws => {
     }
         if(`${data_.type}` == 'game') {
             resizeAndSaveImage(`${data_.img}`,'tmp/img/' + `${data_.name}`, `${data_.name}` + ".png")
-            var new_game = '<button class="web search imagebutton" style="background-image: url(./img/games/' + `${data_.name}` + '.png' + '); background-repeat: none;" onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl(' + `'${data_.url}'` + '); timer()">' + `${data_.name}` + '</button>'
-            // <button class="web search imagebutton" style="background-image: url(./img/games/impossiblequiz.jpg); background-repeat: none;" onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://krunker.io'); timer()">Impossible Quiz</button>
+            var new_game = '<button class="web search imagebutton" style="background-image: url(./img/games/' + `${data_.name}` + '.png' + '); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl(' + `'${data_.url}'` + '); timer()">' + `${data_.name}` + '</button>'
+            // <button class="web search imagebutton" style="background-image: url(./img/games/impossiblequiz.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://krunker.io'); timer()">Impossible Quiz</button>
             fs.appendFileSync("static/g_files.html", new_game)
         }       
     });
