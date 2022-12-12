@@ -123,46 +123,46 @@ server.listen(process.env.PORT || 8080);
 //     fs.renameSync(path + ".png", 'static/img/games/' + file)
 // }   
 
-var wss = new WebSocketServer({ port: 8081 });
+// var wss = new WebSocketServer({ port: 8081 });
 
-wss.on("connection", ws => {
+// wss.on("connection", ws => {
 
-    ws.id = id++;
-    lookup[ws.id] = {socket: ws, username: 'anon'};
-    // sending message
-    ws.on("message", (data) => {
-        var data_ = JSON.parse(data);
-        if(`${data_.type}` == 'connected') {
-            lookup[ws.id].username = `${data_.value}`;
-        }
-        if(`${data_.type}` == 'chat') {
-        wss.clients.forEach(client=>{
-            if(client.readyState === WebSocket.OPEN && `${data_.type}` == 'chat')
-                // var enc = encrypted_chat(`${data_.value}`, '727wysi', `${data_.value}`, client); 
-                chat(client, lookup[ws.id].username);
-                // client.send(JSON.stringify({value: `${data_.value}`, type: 'chat'}));
-                console.log(`${data_.value}`); 
-        })
-    }
-        if(`${data_.type}` == 'game') {
-            resizeAndSaveImage(`${data_.img}`,'tmp/img/' + `${data_.name}`, `${data_.name}` + ".png")
-            var new_game = '<button class="web search imagebutton" style="background-image: url(./img/games/' + `${data_.name}` + '.png' + '); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl(' + `'${data_.url}'` + '); timer()">' + `${data_.name}` + '</button>'
-            // <button class="web search imagebutton" style="background-image: url(./img/games/impossiblequiz.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://krunker.io'); timer()">Impossible Quiz</button>
-            fs.appendFileSync("static/g_files.html", new_game)
-        }       
-    });
+//     ws.id = id++;
+//     lookup[ws.id] = {socket: ws, username: 'anon'};
+//     // sending message
+//     ws.on("message", (data) => {
+//         var data_ = JSON.parse(data);
+//         if(`${data_.type}` == 'connected') {
+//             lookup[ws.id].username = `${data_.value}`;
+//         }
+//         if(`${data_.type}` == 'chat') {
+//         wss.clients.forEach(client=>{
+//             if(client.readyState === WebSocket.OPEN && `${data_.type}` == 'chat')
+//                 // var enc = encrypted_chat(`${data_.value}`, '727wysi', `${data_.value}`, client); 
+//                 chat(client, lookup[ws.id].username);
+//                 // client.send(JSON.stringify({value: `${data_.value}`, type: 'chat'}));
+//                 console.log(`${data_.value}`); 
+//         })
+//     }
+//         if(`${data_.type}` == 'game') {
+//             resizeAndSaveImage(`${data_.img}`,'tmp/img/' + `${data_.name}`, `${data_.name}` + ".png")
+//             var new_game = '<button class="web search imagebutton" style="background-image: url(./img/games/' + `${data_.name}` + '.png' + '); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl(' + `'${data_.url}'` + '); timer()">' + `${data_.name}` + '</button>'
+//             // <button class="web search imagebutton" style="background-image: url(./img/games/impossiblequiz.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://krunker.io'); timer()">Impossible Quiz</button>
+//             fs.appendFileSync("static/g_files.html", new_game)
+//         }       
+//     });
 
-    ws.on('close', function () {
-        delete lookup[ws.id]
-    });
-    // handling client connection error
-    ws.onerror = function () {
-        console.log("Some Error occurred")
-    }
-});
+//     ws.on('close', function () {
+//         delete lookup[ws.id]
+//     });
+//     // handling client connection error
+//     ws.onerror = function () {
+//         console.log("Some Error occurred")
+//     }
+// });
 
-function sleep(ms) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, ms);
-    });
-  }
+// function sleep(ms) {
+//     return new Promise((resolve) => {
+//       setTimeout(resolve, ms);
+//     });
+//   }
