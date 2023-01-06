@@ -3,7 +3,7 @@
 body
 {
     font-family: 'Quicksand', sans-serif;
-    background: #434C5E;
+    background: #3B4252;
     height: 100%;
     margin: 0;
     background-repeat: no-repeat;
@@ -108,9 +108,9 @@ body
     padding: 0.5em 0.8em 0.5em 0.8em;
     border-style: none;
     border-radius: 1000000px;
-    color: rgb(239, 239, 239);
+    background-color: rgb(30,30,30);
     font-weight: bold;
-    background: linear-gradient(180deg, #2E3440 0%, #4C566A 100%);
+    background-color: rgb(30,30,30);
     transition: box-shadow 0.15s ease-in-out;
    }
    
@@ -196,7 +196,7 @@ body
     border-radius: 1000000px;
     color: rgb(239, 239, 239);
     font-weight: bold;
-    background: linear-gradient(180deg, #2E3440 0%, #4C566A 100%);
+    background-color: rgb(30,30,30);
     transition: box-shadow 0.15s ease-in-out;
    }
    
@@ -284,7 +284,7 @@ body
     border-radius: 1000000px;
     color: rgb(239, 239, 239);
     font-weight: bold;
-    background: linear-gradient(180deg, #2E3440 0%, #4C566A 100%);
+    background: rgb(30,30,30);
     transition: box-shadow 0.15s ease-in-out;
    }
    
