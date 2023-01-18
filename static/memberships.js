@@ -4,7 +4,7 @@ const _supabase = createClient(
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4eWVncGRzbHJlbWZ2aXJ3dW5xIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjM3NzM0NjEsImV4cCI6MTk3OTM0OTQ2MX0.h0EMF5FCpam2-IpzANEozOv1WOQXzGNwI32QyG1ELjE'
 )
 
-async function getLevelFromKey_VerifyUDID(key) {
+async function getLevelFromKey(key) {
     const { data, error } = await _supabase
     .from('secret')
     .select()
