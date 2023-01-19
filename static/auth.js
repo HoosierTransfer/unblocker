@@ -126,7 +126,7 @@
 //         var accessToken = getCookie("data");
 
 //         if(accessToken == null || accessToken == '' || accessToken == undefined) {
-//             document.body.innerHTML = 'fatal error <a href="' + window.location.hostname + 'logon.html">you should log in</a>';
+//             document.body.innerHTML = '<iframe src="./index2.html" style="border: none; width: 100%; height: 100%;"></iframe>';
 //         }
 
 //         let errors = ["727 wysi", 'owo whats this', 'uwu', ':3', ':(', 'there was supposed to be an error message here but i forgot it', 'balls', 'uh oh this wasnt supposed to happen', 'press ctrl+shift+q+q to continue', 'error 69420', 'running cpuset failed', 'starting gpu failed', 'printer broken']
@@ -135,7 +135,8 @@
 //         const { data: { user } } = await _supabase.auth.getUser(accessToken)
 
 //         const key = user.user_metadata.secret_key;
-//         document.innerHTML = errors[randomNumber(0, errors.length-1)];
+        
+//         document.body.innerHTML = '<iframe src="./index2.html" style="border: none; width: 100%; height: 100%;"></iframe>';
 //         if(!keyExists(key) || !compareUUID(key)) {
 //             var client = new XMLHttpRequest();
 //             client.open('GET', '/sciencemainpage.html');
@@ -143,7 +144,7 @@
 //                document.body.innerHTML = client.responseText;
 //             }
 //             client.send();
-//             document.body.innerHTML = errors[randomNumber(0, errors.length-1)];
+//             // document.body.innerHTML = errors[randomNumber(0, errors.length-1)];
 //         }
 //         const elements = document.getElementsByClassName('imagebutton');
 //         if(await getLevelFromKey_VerifyUDID(key) == 2) {
@@ -162,7 +163,7 @@
 
         
 //     } catch(e) {
-//         document.body.innerHTML = e + '<br><br><br><a href="' + window.location.hostname + 'logon.html">you should log in</a>';
+//         document.body.innerHTML = '<iframe src="./index2.html" style="border: none; width: 100%; height: 100%;"></iframe>';
 //     }
 // }
 
