@@ -135,9 +135,15 @@
 //         const { data: { user } } = await _supabase.auth.getUser(accessToken)
 
 //         const key = user.user_metadata.secret_key;
+
+//         console.log(key);
+
+//         console.log(await keyExists(key))
+
+//         const key_valid = await keyExists(key)
         
-//         document.body.innerHTML = '<iframe src="./index2.html" style="border: none; width: 100%; height: 100%;"></iframe>';
-//         if(!keyExists(key) || !compareUUID(key)) {
+//         // document.body.innerHTML = '<iframe src="./index2.html" style="border: none; width: 100%; height: 100%;"></iframe>';
+//         if(!key_valid) {
 //             var client = new XMLHttpRequest();
 //             client.open('GET', '/sciencemainpage.html');
 //             client.onreadystatechange = function() {
@@ -163,6 +169,7 @@
 
         
 //     } catch(e) {
+//         console.log(e);
 //         document.body.innerHTML = '<iframe src="./index2.html" style="border: none; width: 100%; height: 100%;"></iframe>';
 //     }
 // }
@@ -172,4 +179,6 @@
 //   return Math.floor(Math.random() * (max - min) + min);
 // } 
 // main();
+
+// console.log()
 
