@@ -5,6 +5,7 @@
     "image-downloader": "^4.3.0",
     "node-html-parser": "^6.1.4",
     "node-static": "^0.7.11",
+    "react": "^18.2.0",
     "sharp": "^0.31.2",
     "ws": "^8.11.0"
   },
