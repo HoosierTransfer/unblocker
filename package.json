@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@supabase/supabase-js": "^2.4.1",
     "bare-server-node": "github:tomphttp/bare-server-node",
     "node-static": "^0.7.11"
   },
