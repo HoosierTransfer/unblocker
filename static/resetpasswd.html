@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<head>
+<head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW07DRC8QY"></script>
 <script>
@@ -10,26 +10,27 @@
 
   gtag('config', 'G-KW07DRC8QY');
 </script>
-		<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0"></script>
-		<script type="module" src="auth.js"></script>
-	<script src="/static/scripts/supabase.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0"></script>
 	<link rel="stylesheet" href="style.css">
-	<script src="https://kit.fontawesome.com/6ff9b32dcc.js" crossorigin="anonymous"></script>
-	<title>Reset Password</title>
+	<title>Sign Up</title>
 </head>
 <body>
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0"></script>
+	<script type="module" src="supabase.js"></script>
+	<script type="module">
+		import { Signup } from "./supabase.js";
+		window.Signup1 = Signup;
+	  </script>
 	<div class="container" id="container">
 		<div class="form-container log-in-container">
 			<form action="#">
+				<h1 style="font-size: 30px; top:10px; margin-bottom: 10px;">Science Help</h1>
 				<h1>Reset Password</h1>
 				<!-- <div class="social-container">
-					<div onclick="signInWithGithub()">
-                    <i class="fa-brands fa-github fa-2xl"></i>
-				</div>				
-			</div>
-				<span>or use your account</span> -->
-				<input type="email" placeholder="Email" id="main"/>
-				<button onclick="">Send Reset Link</button>
+                    <i class="fa-brands fa-github fa-2xl"></i>				</div>
+				<span>or use your email</span> -->
+				<input type="email" placeholder="Email" id="main"/> -->
+				<button onclick="Signup1()" type="button">Send reset link</button>
 			</form>
 		</div>
 		<div class="overlay-container">

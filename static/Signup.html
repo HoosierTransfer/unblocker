@@ -10,39 +10,27 @@
 
   gtag('config', 'G-KW07DRC8QY');
 </script>
+	<link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
 	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0"></script>
 	<link rel="stylesheet" href="style.css">
 	<title>Sign Up</title>
 </head>
 <body>
-	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0"></script>
-	<script type="module" src="supabase.js"></script>
-	<script type="module">
-		import { Signup } from "./supabase.js";
-		window.Signup1 = Signup;
-	  </script>
 	<div class="container" id="container">
 		<div class="form-container log-in-container">
-			<form action="#">
+			<form action="/signup" method="POST">
 				<h1 style="font-size: 30px; top:10px; margin-bottom: 10px;">Science Help</h1>
 				<h1>Sign Up</h1>
 				<!-- <div class="social-container">
-                    <i class="fa-brands fa-github fa-2xl"></i>				</div>
-				<span>or use your email</span> -->
-				<input type="email" placeholder="Email" id="main"/>
-				<input type="password" placeholder="Password" id="passwd"/>
-				<input type="password" placeholder="Confirm Password" id="passwdconf"/>
-				<input type="secret" placeholder="Secret Key" id="key"/>
-				<button onclick="Signup1()" type="button">Sign Up</button>
-			</form>
-		</div>
-		<div class="overlay-container">
-			<div class="overlay">
-				<div class="overlay-panel overlay-right">
-					<h1>Science Help</h1>
-					<p>Get help with science for free!</p>
+                    <i class="fa-brands fa-github fa-xl"></i>
 				</div>
-			</div>
+				<span>or use your email</span> -->
+				<input type="email" name="email" placeholder="Email" id="main"/>
+				<input type="password" placeholder="Password" name="password" id="passwd"/>
+				<input type="password" placeholder="Confirm Password" id="passwdconf"/>
+				<input type="secret" placeholder="Secret Key" name="key" id="key"/>
+				<button>Sign Up</button>
+			</form>
 		</div>
 	</div>
 </body>

@@ -63,6 +63,8 @@ server.on('request', async (request, response) => {
 
     const key = user.user_metadata.secret_key;
 
+    console.log(await keyExists("tesst"));
+
     const key_valid = await keyExists(key)
     // console.log(scienceFiles.includes(request.rawHeaders[request.rawHeaders.indexOf('X-Original-URI')+1]))
     if(!key_valid) {
