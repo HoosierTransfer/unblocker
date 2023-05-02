@@ -1,3 +1,4 @@
+
 # Science Help
 
 Unblocker I made for school. Has authentication with keys so admins cant access it.
@@ -28,24 +29,3 @@ Start the server
 ```bash
   npm run start
 ```
-
-
-# Running
-
-Clone the source code
-```bash
-git clone https://github.com/HoosierTransfer/unblocker.git
-```
-
-Install dependencies
-```bash
-npm install
-```
-
-Run server
-```bash
-node index.js
-```
-
-
-
