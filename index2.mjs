@@ -2,7 +2,7 @@ import createBareServer from "@tomphttp/bare-server-node";
 import express from "express";
 import { createServer } from "node:http";
 import { hostname } from "node:os";
-import proxy from "express-http-proxy";
+// import proxy from "express-http-proxy";
 // import { createProxyMiddleware, responseInterceptor } from "http-proxy-middleware";
 
 const bare = createBareServer("/bare/");

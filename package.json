@@ -1,14 +1,8 @@
 {
   "dependencies": {
-    "@supabase/supabase-js": "^2.4.1",
     "@tomphttp/bare-server-node": "^1.2.3",
     "bare-server-node": "^2.0.0",
-    "body-parser": "^1.20.1",
-    "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
-    "express-http-proxy": "^2.0.0",
-    "express-validator": "^6.14.3",
-    "http-proxy-middleware": "^2.0.6",
     "node-static": "^0.7.11"
   },
   "name": "science_help",
