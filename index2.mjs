@@ -1,76 +1,90 @@
 import createBareServer from "@tomphttp/bare-server-node";
 import express from "express";
-import cookieParser from 'cookie-parser'
-import { createClient } from '@supabase/supabase-js';
-import { body, validationResult} from 'express-validator';
 import { createServer } from "node:http";
 import { hostname } from "node:os";
-
-const supabase = createClient(
-  'https://hxyegpdslremfvirwunq.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4eWVncGRzbHJlbWZ2aXJ3dW5xIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjM3NzM0NjEsImV4cCI6MTk3OTM0OTQ2MX0.h0EMF5FCpam2-IpzANEozOv1WOQXzGNwI32QyG1ELjE'
-)
-
-async function keyExists(key) {
-  const { data, error} = await supabase.from('keys').select()
-  for(var i = 0; i < data.length; i++) {
-    if(key === data[i].key) {
-      return true;
-    }
-  }
-}
-
-async function createUser(email, password, key, res) {
-//   if(!keyExists(key)) {
-//     return "Key doesnt exist";
-//   }
-  const { user, session, error } = await supabase.auth.signUp({
-    email: email,
-    password: password,
-    options: {
-    data: {
-      secret_key: key
-    }
-  }
-})
-const now = new Date();
-const time = now.getTime() + 3600 * 1000 * 24;
-now.setTime(time);
-
-res.cookie("data", session.access_token, { expires: now.toUTCString() })
-res.cookie("refToken", session.refresh_token, { expires: now.toUTCString() })
-}
-
+import proxy from "express-http-proxy";
+// import { createProxyMiddleware, responseInterceptor } from "http-proxy-middleware";
 
 const bare = createBareServer("/bare/");
 const app = express();
 
-
-app.use(express.urlencoded({
-  extended: true
-}))
-
-app.use(cookieParser());
-
 app.use(express.static("static/"));
 
-app.post('/signup', body('email').isEmail().normalizeEmail(), body('password').isLength({ min: 8 }), (req, res) => {
-  const errors = validationResult(req);
-  res.cookie("data", 'a')
-  if(true) {
-    const email = req.body.email;
-    console.log(email)
-    createUser(res.body.email, res.body.password, res.body.key, res)
-  }
-  res.end()
-})
+const server = createServer();
 
-// app.use((req, res) => {
-//     res.status(404);
-//     // res.sendFile("static/404/index.html");
+// app.use(
+//   "/",
+//   proxy("http://localhost:8080", {
+//     userResDecorator: (proxyRes, proxyResData, userReq, userRes) => {
+//       // if (userResData && userResData.toString().includes("text/html")) {
+//         // Modify the HTML response here by adding text to the top of the body
+//         const modifiedHTML = "<h1>Injected Text</h1>" + userResData.toString();
+//         return modifiedHTML;
+//     },
+//   })
+// );
+
+// app.use('/proxy', proxy('www.google.com', {
+//   userResDecorator: function(proxyRes, proxyResData, userReq, userRes) {
+//     return "hi";
+//   }
+// }));
+
+// const injected_code = `<script>
+// document.addEventListener('keydown', function (event) {
+//   if (event.ctrlKey && event.shiftKey && event.key === 'ArrowLeft') {
+//     // Simulate the browser's back functionality
+//     window.history.back();
+//   }
 // });
 
-const server = createServer();
+// document.addEventListener('keydown', function (event) {
+//   if (event.ctrlKey && event.shiftKey && event.key === 'ArrowRight') {
+//     // Simulate the browser's back functionality
+//     window.history.forward();
+//   }
+// });
+// </script>`;
+
+// const a = proxy('localhost:8080', {
+//   userResDecorator: function(proxyRes, proxyResData, userReq, userRes) {
+//     if (proxyRes.headers["content-type"] && proxyRes.headers["content-type"].includes("text/html")) {
+//       let data = proxyResData.toString('utf8');
+//       data = "<h1>Injected Text</h1>" + data;
+//       const contentLength = Buffer.byteLength(data, 'utf8');
+//       userRes.setHeader("Content-Length", contentLength);
+//       console.log(data);
+//       return data;
+//     }
+//     return proxyResData;
+//   }
+// })
+
+// app.use(
+//   "/sus",
+//   proxy("http://localhost:8080", {
+//     userResDecorator: (proxyRes, proxyResData, userReq, userRes) => {
+//       if (proxyRes.headers["content-type"] && proxyRes.headers["content-type"].includes("text/html")) {
+//         const originalResponse = proxyResData.toString();
+
+//         // Check if the HTML response has a <body> tag
+//         if (originalResponse.includes("<body>")) {
+//           // Split the HTML into head and body parts
+//           const [head, body] = originalResponse.split("<head>");
+          
+//           // Modify the HTML response by adding text to the top of the body
+//           const modifiedHTML = `${head}<head>${injected_code}${body}`;
+
+//          const contentLength = Buffer.byteLength(modifiedHTML, 'utf8');
+//          userRes.setHeader("Content-Length", contentLength);
+          
+//           return modifiedHTML;
+//         }
+//       }
+//       return proxyResData;
+//     },
+//   })
+// );
 
 server.on("request", (req, res) => {
     if (bare.shouldRoute(req)) {

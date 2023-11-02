@@ -21,42 +21,6 @@ body {
     background-color: var(--background);
 }
 
-/* Firefox */
-/* * {
-    scrollbar-width: thin;
-    scrollbar-color: #5E81AC #E5E9F0;
-  }
-  
-  *::-webkit-scrollbar {
-    width: 10px;
-    width: 10px;
-  }
-  *::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background-color: #E5E9F0;
-  }
-  
-  *::-webkit-scrollbar-track:hover {
-    background-color: #D8DEE9;
-  }
-  
-  *::-webkit-scrollbar-track:active {
-    background-color: #D8DEE9;
-  }
-  
-  *::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #5E81AC;
-  }
-  
-  *::-webkit-scrollbar-thumb:hover {
-    background-color: #81A1C1;
-  }
-  
-  *::-webkit-scrollbar-thumb:active {
-    background-color: #81A1C1;
-  } */
-
 h1 {
   position: center;
   font-family: 'Quicksand', sans-serif;
@@ -104,24 +68,6 @@ h3 {
     font-size: 80px;
     font-weight: 700;
 }
-
-
-/* .sidebar {
-    position: fixed;
-    height: 100%;
-    width: 78px;
-    top: 0;
-    left: 0;
-    background: wheat;
-    padding: 6px 14px;
-    transition: all 0.25s ease;
-    border-radius: 15px;
-}
-
-.sidebar ul {
-    list-style-position: inside;
-    padding-left: 0;
-} */
 
 .ham {
     cursor: pointer;
@@ -206,32 +152,6 @@ h3 {
     margin-left:12px;
 }
 
-/* .sidebar ul li {
-    position: relative;
-    height: 50px;
-    width: 100%;
-    margin: 0px;
-    list-style: none;
-    line-height: 50px;
-}
-
-.sidebar a {
-    height: 500%;
-    width: 506%;
-    border-radius: 5px;
-    background-color: aliceblue;
-} */
-
-/* .sidebar ul li a {
-    color: var(--sidebarcolor2);
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    transition: all 0.4s ease;
-    border-radius: 12px;
-    white-space: nowrap;
-} */
-
 i {
     font-size: 32px;
 }
@@ -261,52 +181,6 @@ i {
     backdrop-filter: blur(4px);
     overflow: hidden;
 }
-
-/* .sidebar.active {
-    width: 240px;
-}
-
-.sidebar .logo_content .logo {
-    color: var(--sidebarcolor2);
-    display: flex;
-    height: 50px;
-    width: 100%;
-    align-items: center;
-    opacity: 0;
-    transition: all 0.25s ease;
-}
-
-.sidebar.active .logo_content .logo {
-    opacity: 1;
-    pointer-events: none;
-}
-
-.logo_content .logo i {
-    font-size: 28px;
-    margin-right: 5px;
-}
-
-.logo_content .logo .logo_name {
-    font-size: 20px;
-    font-weight: 400;
-} */
-
-/* .sidebar #btn {
-    position: absolute;
-    color: var(--sidebarcolor2);
-    left: 50%;
-    top: 6px;
-    font-size: 20px;
-    height: 50px;
-    width: 50px;
-    text-align: center;
-    line-height: 50px;
-    transform: translateX(-50%);
-}
-
-.sidebar.active #btn {
-    left: 90%;
-} */
 
 .sidebar ul {
     /* margin-top: 20px; */

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
+<html>
+<head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW07DRC8QY"></script>
 <script>
@@ -10,125 +10,177 @@
 
   gtag('config', 'G-KW07DRC8QY');
 </script>
-        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0"></script>
-        <script type="module" src="auth.js"></script>
-  <title>Science Help</title>
-  <!-- Meta/Info Attributes -->
-  <link rel = "icon" href = "./img/icons/logo.ico" type = "image/x-icon">
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="./loader.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Boxicons CDN Link -->
-  <script src="https://kit.fontawesome.com/6ff9b32dcc.js" crossorigin="anonymous"></script>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-  <!-- Link to CSS Stylesheet -->
-  <link rel="stylesheet" href="./main.css">
-</head>
-<div class="background_content">
-<body>
- <!--- Sidebar / Navigation Bar-->
- <div class="sidebar" id="menu_">
-    <!-- Sidebar Logo Content -->
-    <div class="logo_content">
-        <div class="logo">
-            <!-- Sidebar Logo -->
-            <i class='bx bxl-google' id="menu"></i>
-            <!-- Sidebar Title -->
-            <div class="logo_name">GeneralMath</div>
-        </div>
-        <i class='bx bx-menu' id="btn"></i>
-    </div>
-    <ul class="nav_list" style="z-index:9999; position:relative">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0"></script>
+    <link href="./assets/css/all.css" rel="stylesheet">
 
-        <!-- Home Icon and Title on the Sidebar -->
-        <li>
-            <a href="./menu.html">
-                <i class='bx bx-home' ></i>
-                <span class="links_name">Home</span>
-            </a>
-        </li>
-        <!-- Proxy Icon and Title on the Sidebar -->                
-        <li>
-            <a href="./search.html">
-                <i class='bx bx-window' ></i>
-                <span class="links_name">Search</span>
-            </a>
-        </li>                
-        <!-- Games Icon and Title on the Sidebar -->
-        <li>
-            <a href="./g.html">
-                <i class='bx bxs-invader' ></i>
-                <span class="links_name">Games</span>
-            </a>
-        </li>                
-        <!-- Sites Icon and Title on the Sidebar -->
-        <li>
-            <a href="./sites.html">
-                <i class='bx bxs-grid' ></i>
-                <span class="links_name">Sites</span>
-            </a>
-        </li>
-        <!-- Support Icon and Title on the Sidebar -->
-        <li>
-            <a href="./support.html">
-                <i class='bx bx-question-mark' ></i>
-                <span class="links_name">Support</span>
-            </a>
-        </li>   
-        <!-- Community Icon and Title on the Sidebar -->             
-        <li>
-            <a href="https://discord.com/invite/cNfDWcA64K" target="_blank">
-                <i class='bx bx-chat' ></i>
-                <span class="links_name">Community</span>
-            </a>
-        </li>
-        <!-- Patreon Icon and Title on the Sidebar -->
-        <li>
-            <a href="https://patreon.com/generalmathematics" target="_blank">
-                <i class='bx bxl-patreon'></i>
-                <span class="links_name">Patreon</span>
-            </a>
-        </li>
-        <!-- GitHub Icon and Title on the Sidebar -->
-        <li>
-            <a href="https://github.com/GeneralMathematics/General-Mathematics-Beta" target="_blank">
-                <i class='bx bxl-github'></i>
-                <span class="links_name">GitHub</span>
-            </a>
-        </li>
-        <!-- Settings Icon and Title on the Sidebar -->
-        <li>
-            <a href="./settings.html">
-                <i class='bx bx-slider-alt' ></i>
-                <span class="links_name">Settings</span>
-            </a>
-        </li>
-        <li>
-            <a href="./privacy.html">
-                <i class='bx bx-fingerprint'></i>
-                <span class="links_name">Privacy</span>
-            </a>
-        </li>
-        <li>
-            <a href="./terms.html">
-                <i class='bx bx-clipboard'></i>
-                <span class="links_name">Terms</span>
-            </a>
-        </li>
-    </ul>
-</div>
-<div class="home_content">
-    <h1> Science Help </h1>
-    <div style="text-align:center;margin-left: 1%;">
-    <form>
+    <link rel="stylesheet" href="./new_css.css">
+    <title>Science Help</title>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+    <!-- temp remove when deploy -->
+    <div id="nav">
+
+        <!-- <link href="./assets/css/all.css" rel="stylesheet"> -->
+            <ul>
+                <li>
+                    <div class="container">
+                        <div class="bar_">
+                            <a onclick="toggle_bar()">
+                                <!-- <i class="fa-solid fa-bars bar" id="bars"></i> -->
+                                <svg class="ham hamRotate ham4" viewBox="0 0 100 100" width="80" onclick="this.classList.toggle('active')">
+                                    <path
+                                          class="line top"
+                                          id="path1"
+                                          d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+                                    <path
+                                          class="line middle"
+                                          id="path2"
+                                          d="m 70,50 h -40" />
+                                    <path
+                                          class="line bottom"
+                                          id="path3"
+                                          d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+                                          
+                                </svg>
+                           </a>
+                        </div>
+                        <div class="Application" style="visibility: hidden;" id="app"><span>Science Help</span></div>
+                    </div>
+                    
+                </li>
+                <hr id="split">
+                <li>
+                    <div class="container__">
+                        <div class="bar__">
+                            <a class="boxa1" href="./menu.html">
+                                <i class="fa-solid fa-house"></i>
+                            </a>
+                        </div>
+                        <div class="text_ hideText" style="visibility: hidden;"><span>Home</span></div>
+                      </div>
+                </li>
+                <li>
+                    <div class="container_">
+                        <div class="bar__">
+                            <a class="boxa" href="./sites.html">
+                                <i class="fa-regular fa-window"></i>
+                                <!-- <i class="fa-duotone fa-grid-2" style="font-size: 28;"></i> -->
+                            </a>
+                        </div>
+                        <div class="text_ hideText" style="visibility: hidden;"><span>Sites</span></div>
+                      </div>
+                </li>
+                <li>
+
+                    <div class="container_">
+                        <div class="bar__">
+                            <a class="boxa" href="games.html">
+                                <i class="fa-solid fa-gamepad-modern"></i>
+                            </a>
+                        </div>
+                        <div class="text_ hideText" style="visibility: hidden;"><span>Games</span></div>
+                      </div>
+                </li>
+                <li>
+                    <div class="container_">
+                        <div class="bar__">
+                            <a class="boxa" href="./search.html">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+                        </div>
+                        <div class="text_ hideText" style="visibility: hidden;"><span>Search</span></div>
+                      </div>
+                </li>
+                <li>
+                    <div class="container_">
+                        <div class="bar__">
+                            <a class="boxa" href="https://discord.gg/fZP6rJC7Hk">
+                                <i class="fa-brands fa-discord"></i>
+                            </a>
+                        </div>
+                        <div class="text_ hideText" style="visibility: hidden;"><span>Discord</span></div>
+                      </div>
+                </li>
+                <li>
+                    <div class="container_">
+                        <div class="bar__">
+                            <a class="boxa" href="settings.html">
+                                <i class="fa-solid fa-sliders"></i>
+                            </a>
+                        </div>
+                        <div class="text_ hideText" style="visibility: hidden;"><span>Settings</span></div>
+                      </div>
+                </li>
+
+
+                <!-- <li>
+                    <div class="container_">
+                        <div class="bar__">
+                            <a class="boxa">
+                                <i class="fa-solid fa-book"></i>
+                            </a>
+                        </div>
+                        <div class="text_ hideText" style="visibility: hidden;"><span>Terms</span></div>
+                      </div>
+                </li> -->
+            </ul>
+        </div>
+        <script>
+            var bar_toggled = false;
+            function toggle_bar() {
+                if(bar_toggled == false) {
+                    bar_toggled = true;
+                    //alert(432);
+                    document.getElementById("app").style = "visibility: visable;";
+                    document.getElementById("split").style = "width: 90%;";
+                    document.getElementById("sidebar").style = "width: 200px;";
+                    //document.getElementById("bars").className = "fa-solid fa-xmark bar";
+                    var menuElements = document.getElementsByClassName("hideText");
+
+
+                    for(var i = 0; i < menuElements.length; i++) {
+                        menuElements[i].style = "visibility: visable;";
+                    }
+                } else {
+                    bar_toggled = false;
+                    document.getElementById("app").style = "visibility: hidden;";
+                    document.getElementById("split").style = "width: 75%;";
+                    document.getElementById("sidebar").style = "width: 75px;";
+                    //document.getElementById("bars").className = "fa-solid fa-bars bar";
+
+                    var menuElements = document.getElementsByClassName("hideText");
+
+                    for(var i = 0; i < menuElements.length; i++) {
+                        menuElements[i].style = "visibility: hidden;";
+                    }
+                }
+            }
+        </script>
+
+    </div>
+
+    <div class="home_content">
+        <h1>
+            Science Help
+        </h1>
+        <div style="text-align:center;margin-left: 1%;">
+
+            <form style="z-index: 0;">
     <button class="web online search imagebutton" style="background-image: url(./img/sites/geforce.png); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://play.geforcenow.com'); timer()">Geforce Now</button>
     <button class="web search imagebutton" style="background-image: url(./img/games/coolmathgames.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://coolmathgames.com'); timer()">CoolMathGames</button>
     <button class="web search imagebutton" style="background-image: url(./img/sites/cg.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://crazygames.com'); timer()">Crazy Games</button>
+    <button class="web search imagebutton" style="background-image: url(./img/sites/Itch.jpg); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://itch.io'); timer()">Itch io</button>
+    <button class="web search imagebutton" style="background-image: url(./img/sites/now-gg.png); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://now.gg'); timer()">Now GG</button>
     <button class="web search imagebutton" style="background-image: url(./img/sites/poki.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://poki.com'); timer()">Poki</button>
     <button class="web search imagebutton" style="background-image: url(./img/sites/y8.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://y8.com'); timer()">Y8</button>
     <button class="web search imagebutton" style="background-image: url(./img/sites/discord.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://discord.com'); timer()">Discord</button>
     <button class="web search imagebutton" style="background-image: url(./img/sites/youtube.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://youtube.com'); timer()">Youtube</button>
     <button class="web search imagebutton" style="background-image: url(./img/sites/twitch.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://twitch.com'); timer()">Twitch</button>
+    <button class="web search imagebutton" style="background-image: url(./img/sites/espn.png); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://ESPN.com'); timer()">ESPN</button>
+    <button class="web search imagebutton" style="background-image: url(./img/sites/f1.png); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://f1tv.formula1.com/'); timer()">F1 TV</button>
+    <button class="web search imagebutton" style="background-image: url(./img/sites/cyr.png); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://www.crunchyroll.com/'); timer()">Crunchyroll</button>
+    <button class="web search imagebutton" style="background-image: url(./img/sites/fun.png); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://www.funimation.com'); timer()">Funimation</button>
     <button class="web search imagebutton" style="background-image: url(./img/sites/twitter.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://twitter.com'); timer()">Twitter</button>
     <button class="web search imagebutton" style="background-image: url(./img/sites/reddit.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://reddit.com'); timer()">Reddit</button>
     <button class="web search imagebutton" style="background-image: url(./img/sites/google.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://google.com'); timer()">Google</button>
@@ -140,19 +192,42 @@
     <button class="web search imagebutton" style="background-image: url(./img/sites/aliexpress.1.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://aliexpress.com'); timer()">Aliexpress</button>
     <button class="web search imagebutton" style="background-image: url(./img/sites/amazon.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://amazon.com'); timer()">Amazon</button>
     <button class="web search imagebutton" style="background-image: url(./img/sites/tumblr.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://tumblr.com'); timer()">Tumblr</button>
-    <button class="web search imagebutton" style="background-image: url(./img/sites/now-gg.png); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://now.gg'); timer()">Now GG</button>
-    <button class="web search imagebutton" style="background-image: url(./img/sites/espn.png); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://ESPN.com'); timer()">ESPN</button>
-    <button class="web search imagebutton" style="background-image: url(./img/sites/f1.png); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://f1tv.formula1.com/'); timer()">F1 TV</button>
-    <button class="web search imagebutton" style="background-image: url(./img/sites/cyr.png); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://www.crunchyroll.com/'); timer()">Crunchyroll</button>
-    <button class="web search imagebutton" style="background-image: url(./img/sites/fun.png); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://www.funimation.com'); timer()">Funimation</button>
-    <button class="web search imagebutton" style="background-image: url(./img/sites/Itch.jpg); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://itch.io'); timer()">Itch io</button>
-    </form>
+    <button class="web online search imagebutton level3" style="background-image: url(./img/sites/geforce.png); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://play.geforcenow.com'); timer()">Geforce Now</button>
+    <!-- <button class="web search imagebutton" style="background-image: url(./img/games/coolmathgames.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://coolmathgames.com'); timer()">CoolMathGames</button> -->
+    <button class="web search imagebutton level1" style="background-image: url(./img/sites/cg.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://crazygames.com'); timer()">Crazy Games</button>
+    <button class="web search imagebutton level1" style="background-image: url(./img/sites/poki.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://poki.com'); timer()">Poki</button>
+    <button class="web search imagebutton level1" style="background-image: url(./img/sites/y8.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://y8.com'); timer()">Y8</button>
+    <button class="web search imagebutton level2" style="background-image: url(./img/sites/discord.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://discord.com'); timer()">Discord</button>
+    <button class="web search imagebutton level1" style="background-image: url(./img/sites/youtube.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://youtube.com'); timer()">Youtube</button>
+    <button class="web search imagebutton level2" style="background-image: url(./img/sites/twitch.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://twitch.com'); timer()">Twitch</button>
+    <button class="web search imagebutton level2" style="background-image: url(./img/sites/twitter.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://twitter.com'); timer()">Twitter</button>
+    <button class="web search imagebutton level1" style="background-image: url(./img/sites/reddit.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://reddit.com'); timer()">Reddit</button>
+    <!-- <button class="web search imagebutton" style="background-image: url(./img/sites/google.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://google.com'); timer()">Google</button> -->
+    <button class="web search imagebutton level2" style="background-image: url(./img/sites/spotify.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://spotify.com'); timer()">Spotify</button>
+    <button class="web search imagebutton level2" style="background-image: url(./img/sites/instagram.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://instagram.com'); timer()">Instagram</button>
+    <button class="web search imagebutton level3" style="background-image: url(./img/sites/disney+.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://disneyplus.com'); timer()">Disney+</button>
+    <button class="web search imagebutton level1" style="background-image: url(./img/sites/tiktok.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://tiktok.com'); timer()">TikTok</button>
+    <button class="web search imagebutton level1" style="background-image: url(./img/sites/pinterest.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://pinterest.com'); timer()">Pinterest</button>
+    <button class="web search imagebutton level1" style="background-image: url(./img/sites/aliexpress.1.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://aliexpress.com'); timer()">Aliexpress</button>
+    <button class="web search imagebutton level1" style="background-image: url(./img/sites/amazon.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://amazon.com'); timer()">Amazon</button>
+    <button class="web search imagebutton level1" style="background-image: url(./img/sites/tumblr.jpg); background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://tumblr.com'); timer()">Tumblr</button>
+    <button class="web search imagebutton level3" style="background-image: url(./img/sites/now-gg.png); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://now.gg'); timer()">Now GG</button>
+    <button class="web search imagebutton level3" style="background-image: url(./img/sites/espn.png); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://ESPN.com'); timer()">ESPN</button>
+    <button class="web search imagebutton level3" style="background-image: url(./img/sites/f1.png); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://f1tv.formula1.com/'); timer()">F1 TV</button>
+    <!-- <button class="web search imagebutton" style="background-image: url(./img/sites/cyr.png); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://www.crunchyroll.com/'); timer()">Crunchyroll</button> -->
+    <button class="web search imagebutton level2" style="background-image: url(./img/sites/fun.png); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://www.funimation.com'); timer()">Funimation</button>
+    <button class="web search imagebutton level3" style="background-image: url(./img/sites/Itch.jpg); object-fit:fill; background-repeat: none;" type='button' onclick="location.href=__uv$config.prefix + __uv$config.encodeUrl('https://itch.io'); timer()">Itch io</button>
+            </form>
+        </div>
     </div>
-</div>
+
+    <div id="particles-js"></div>
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="./particles.js"></script>
     <script src="./uv/uv.bundle.js"></script>
     <script src="./uv/uv.config.js"></script>
     <script src="./scripts/index.js"></script>
-    <script src="./scripts/settings.js"></script>
-    
-    </body>
+    <script src="./new_index.js"></script><script src="./settings.js"></script>
+    <!-- <script src="./auth.js"></script> -->
+</body>
 </html>
