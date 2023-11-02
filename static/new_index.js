@@ -51,6 +51,17 @@ function clickPress(event) {
     }
 }
 
+function load_site(url) {
+    makeloader()
+    window.navigator.serviceWorker.register('./sw.js', {
+        scope: __uv$config.prefix
+    }).then(() => {
+        if (!isUrl(url)) url = 'https://www.google.com/search?q=' + url;
+        else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
+        load(url)
+    });
+}
+
 /**
  * Handles the input of the search bar.           
  * @returns None           
@@ -60,7 +71,7 @@ uv_bar.oninput = function() {
     if(tmp_.filter(fil)[0] != undefined)
     {
         document.getElementById("1_").innerText = tmp_.filter(fil)[0];
-        document.getElementById("1_").onclick = "location.href=__uv$config.prefix + __uv$config.encodeUrl('https://"+tmp_.filter(fil)[0] + "'); timer()";
+        document.getElementById("1_").addEventListener("click", () => {load_site(tmp_.filter(fil)[2])});
     }
     else{
         document.getElementById("3_").onclick = '';
@@ -68,7 +79,7 @@ uv_bar.oninput = function() {
     }
     if(tmp_.filter(fil)[1] != undefined){
         document.getElementById("2_").innerText = tmp_.filter(fil)[1];
-        document.getElementById("2_").onclick = "location.href=__uv$config.prefix + __uv$config.encodeUrl('https://"+tmp_.filter(fil)[1] + "'); timer()";
+        document.getElementById("1_").addEventListener("click", () => {load_site(tmp_.filter(fil)[2])})
     }
     else {
         document.getElementById("3_").onclick = '';
@@ -76,7 +87,7 @@ uv_bar.oninput = function() {
     }
     if(tmp_.filter(fil)[2] != undefined) {
         document.getElementById("3_").innerText = tmp_.filter(fil)[2];
-        document.getElementById("3_").onclick = "location.href=__uv$config.prefix + __uv$config.encodeUrl('https://"+tmp_.filter(fil)[2] + "'); timer()";
+        document.getElementById("1_").addEventListener("click", () => {load_site(tmp_.filter(fil)[2])});
     }
     else {
         document.getElementById("3_").onclick = '';
