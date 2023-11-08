@@ -1,14 +1,13 @@
 {
   "dependencies": {
-    "@tomphttp/bare-server-node": "^1.2.3",
-    "bare-server-node": "^2.0.0",
+    "@tomphttp/bare-server-node": "^2.0.1",
     "express": "^4.18.2",
     "node-static": "^0.7.11"
   },
   "name": "science_help",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "engines": {
-    "node": "18.x"
+    "node": "21.x"
   },
   "description": "Online study resorces for science!",
   "main": "index.js",
