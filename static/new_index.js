@@ -56,7 +56,7 @@ function load_site(url) {
     window.navigator.serviceWorker.register('./sw.js', {
         scope: __uv$config.prefix
     }).then(() => {
-        if (!isUrl(url)) url = 'https://www.google.com/search?q=' + url;
+        if (!isUrl(url)) url = 'https://duckduckgo.com/?q=' + url;
         else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
         load(url)
     });
@@ -71,7 +71,7 @@ uv_bar.oninput = function() {
     if(tmp_.filter(fil)[0] != undefined)
     {
         document.getElementById("1_").innerText = tmp_.filter(fil)[0];
-        document.getElementById("1_").addEventListener("click", () => {load_site(tmp_.filter(fil)[2])});
+        document.getElementById("1_").addEventListener("click", () => {load_site(tmp_.filter(fil)[0])});
     }
     else{
         document.getElementById("3_").onclick = '';
@@ -79,7 +79,7 @@ uv_bar.oninput = function() {
     }
     if(tmp_.filter(fil)[1] != undefined){
         document.getElementById("2_").innerText = tmp_.filter(fil)[1];
-        document.getElementById("1_").addEventListener("click", () => {load_site(tmp_.filter(fil)[2])})
+        document.getElementById("1_").addEventListener("click", () => {load_site(tmp_.filter(fil)[1])})
     }
     else {
         document.getElementById("3_").onclick = '';

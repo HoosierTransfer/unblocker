@@ -1,127 +1,76 @@
 import { createBareServer } from '@tomphttp/bare-server-node';
-import express from "express";
-import { createServer } from "node:http";
-import { hostname } from "node:os";
-// import proxy from "express-http-proxy";
-// import { createProxyMiddleware, responseInterceptor } from "http-proxy-middleware";
+import express from 'express';
+import { createServer as createHttpServer } from 'http';
+import { createServer as createHttpsServer } from 'https';
+import { readFileSync } from 'fs';
+import { hostname } from 'os';
 
-const bare = createBareServer("/bare/");
+const bare = createBareServer('/bare/');
 const app = express();
 
-app.use(express.static("static/"));
+app.use(express.static('static/'));
 
-const server = createServer();
-
-// app.use(
-//   "/",
-//   proxy("http://localhost:8080", {
-//     userResDecorator: (proxyRes, proxyResData, userReq, userRes) => {
-//       // if (userResData && userResData.toString().includes("text/html")) {
-//         // Modify the HTML response here by adding text to the top of the body
-//         const modifiedHTML = "<h1>Injected Text</h1>" + userResData.toString();
-//         return modifiedHTML;
-//     },
-//   })
-// );
-
-// app.use('/proxy', proxy('www.google.com', {
-//   userResDecorator: function(proxyRes, proxyResData, userReq, userRes) {
-//     return "hi";
-//   }
-// }));
-
-// const injected_code = `<script>
-// document.addEventListener('keydown', function (event) {
-//   if (event.ctrlKey && event.shiftKey && event.key === 'ArrowLeft') {
-//     // Simulate the browser's back functionality
-//     window.history.back();
-//   }
-// });
-
-// document.addEventListener('keydown', function (event) {
-//   if (event.ctrlKey && event.shiftKey && event.key === 'ArrowRight') {
-//     // Simulate the browser's back functionality
-//     window.history.forward();
-//   }
-// });
-// </script>`;
-
-// const a = proxy('localhost:8080', {
-//   userResDecorator: function(proxyRes, proxyResData, userReq, userRes) {
-//     if (proxyRes.headers["content-type"] && proxyRes.headers["content-type"].includes("text/html")) {
-//       let data = proxyResData.toString('utf8');
-//       data = "<h1>Injected Text</h1>" + data;
-//       const contentLength = Buffer.byteLength(data, 'utf8');
-//       userRes.setHeader("Content-Length", contentLength);
-//       console.log(data);
-//       return data;
-//     }
-//     return proxyResData;
-//   }
-// })
-
-// app.use(
-//   "/sus",
-//   proxy("http://localhost:8080", {
-//     userResDecorator: (proxyRes, proxyResData, userReq, userRes) => {
-//       if (proxyRes.headers["content-type"] && proxyRes.headers["content-type"].includes("text/html")) {
-//         const originalResponse = proxyResData.toString();
-
-//         // Check if the HTML response has a <body> tag
-//         if (originalResponse.includes("<body>")) {
-//           // Split the HTML into head and body parts
-//           const [head, body] = originalResponse.split("<head>");
-          
-//           // Modify the HTML response by adding text to the top of the body
-//           const modifiedHTML = `${head}<head>${injected_code}${body}`;
-
-//          const contentLength = Buffer.byteLength(modifiedHTML, 'utf8');
-//          userRes.setHeader("Content-Length", contentLength);
-          
-//           return modifiedHTML;
-//         }
-//       }
-//       return proxyResData;
-//     },
-//   })
-// );
-
-server.on("request", (req, res) => {
-    if (bare.shouldRoute(req)) {
-      bare.routeRequest(req, res);
-    } else {
-      app(req, res);
-    }
+const httpServer = createHttpServer();
+const httpsServer = createHttpsServer({
+  key: readFileSync('key.pem'),     // Replace with your SSL certificate key file path
+  cert: readFileSync('cert.pem'),   // Replace with your SSL certificate file path
 });
 
-server.on("upgrade", (req, socket, head) => {
-    if (bare.shouldRoute(req)) {
-      bare.routeUpgrade(req, socket, head);
-    } else {
-      socket.end();
-    }
+httpServer.on('request', (req, res) => {
+  if (bare.shouldRoute(req)) {
+    bare.routeRequest(req, res);
+  } else {
+    app(req, res);
+  }
 });
 
-let port = parseInt(process.env.PORT || "");
+httpServer.on('upgrade', (req, socket, head) => {
+  if (bare.shouldRoute(req)) {
+    bare.routeUpgrade(req, socket, head);
+  } else {
+    socket.end();
+  }
+});
 
-if (isNaN(port)) port = 8080;
+httpsServer.on('request', (req, res) => {
+  if (bare.shouldRoute(req)) {
+    bare.routeRequest(req, res);
+  } else {
+    app(req, res);
+  }
+});
 
-server.on("listening", () => {
-  const address = server.address();
+httpsServer.on('upgrade', (req, socket, head) => {
+  if (bare.shouldRoute(req)) {
+    bare.routeUpgrade(req, socket, head);
+  } else {
+    socket.end();
+  }
+});
 
-  // by default we are listening on 0.0.0.0 (every interface)
-  // we just need to list a few
-  console.log("Listening on:");
+let port = parseInt(process.env.PORT || '');
+
+httpServer.on('listening', () => {
+  const address = httpServer.address();
+
+  console.log('HTTP Listening on:');
   console.log(`\thttp://localhost:${address.port}`);
   console.log(`\thttp://${hostname()}:${address.port}`);
   console.log(
-    `\thttp://${
-      address.family === "IPv6" ? `[${address.address}]` : address.address
-    }:${address.port}`
+    `\thttp://${address.family === 'IPv6' ? `[${address.address}]` : address.address}:${address.port}`
   );
 });
 
-server.listen({
-  port,
+httpsServer.on('listening', () => {
+  const address = httpsServer.address();
+
+  console.log('HTTPS Listening on:');
+  console.log(`\thttps://localhost:${address.port}`);
+  console.log(`\thttps://${hostname()}:${address.port}`);
+  console.log(
+    `\thttps://${address.family === 'IPv6' ? `[${address.address}]` : address.address}:${address.port}`
+  );
 });
 
+httpServer.listen(80, '127.0.0.1');
+httpsServer.listen(443, '127.0.0.1');  // Replace 443 with your desired HTTPS port

@@ -36,7 +36,7 @@ if (urlParams.get("url") != null) {
     scope: __uv$config.prefix
   }).then(() => {
     let url = input.value.trim();
-    if (!isUrl(url)) url = 'https://www.google.com/search?q=' + url;
+    if (!isUrl(url)) url = 'https://duckduckgo.com/?q=test' + url;
     else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
     window.history.replaceState("object or string", "Title", "/"+window.location.href.substring(window.location.href.lastIndexOf('/') + 1).split("?")[0]);
     load(url);
@@ -50,7 +50,7 @@ form.addEventListener('submit', async event => {
         scope: __uv$config.prefix
     }).then(() => {
         let url = input.value.trim();
-        if (!isUrl(url)) url = 'https://www.google.com/search?q=' + url;
+        if (!isUrl(url)) url = 'https://duckduckgo.com/?q=test' + url;
         else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
         load(url)
     });
