@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "@tomphttp/bare-server-node": "^2.0.1",
+    "babel-loader": "^9.2.1",
     "express": "^4.18.2",
+    "glob": "^11.0.0",
     "node-static": "^0.7.11"
   },
   "name": "science_help",
@@ -21,5 +23,15 @@
     "math"
   ],
   "author": "HoosierTransfer",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.0",
+    "parcel": "^2.12.0",
+    "prettier": "^3.3.3",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  }
 }

@@ -72,5 +72,4 @@ httpsServer.on('listening', () => {
   );
 });
 
-httpServer.listen(80, '127.0.0.1');
-httpsServer.listen(443, '127.0.0.1');  // Replace 443 with your desired HTTPS port
+httpServer.listen(9092, '127.0.0.1');

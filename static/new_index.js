@@ -3,118 +3,117 @@ particlesJS("particles-js", { "particles": { "number": { "value": 80, "density":
 // localStorage.clear();
 
 try {
-/**
- * filters the image buttons based on the search bar.           
- * @returns None           
- */
-const image_buttons = document.getElementsByClassName("imagebutton");
+    /**
+     * filters the image buttons based on the search bar.           
+     * @returns None           
+     */
+    const image_buttons = document.getElementsByClassName("imagebutton");
 
-const search_bar = document.getElementById("search");
-search_bar.oninput = function() {
-for(var i = 0; i < image_buttons.length; i++) {
-        image_buttons[i].style.display = "inline";
-        if(!(image_buttons[i].innerHTML.toLowerCase().replace(/\s+/g, '').includes(search_bar.value.toLowerCase().replace(/\s+/g, ''))) && search_bar.value != '') {
-            //alert(image_buttons[i].style.display);
-            image_buttons[i].style.display = "none";
+    const search_bar = document.getElementById("search");
+    search_bar.oninput = function () {
+        for (var i = 0; i < image_buttons.length; i++) {
+            image_buttons[i].style.display = "inline";
+            if (!(image_buttons[i].innerHTML.toLowerCase().replace(/\s+/g, '').includes(search_bar.value.toLowerCase().replace(/\s+/g, ''))) && search_bar.value != '') {
+                //alert(image_buttons[i].style.display);
+                image_buttons[i].style.display = "none";
+            }
         }
     }
-}
 }
 catch {
 
 }
 try {
 
-const uv_bar = document.getElementById("searchuv");
-const search_dropdown = document.getElementById("prev");
+    const uv_bar = document.getElementById("searchuv");
+    const search_dropdown = document.getElementById("prev");
 
-function fil(value) {
-    return value.toLowerCase().includes(uv_bar.value.toLowerCase());
-}
+    function fil(value) {
+        return value.toLowerCase().includes(uv_bar.value.toLowerCase());
+    }
 
-/**
- * Takes in an event and checks if the key pressed is enter.       
- * If it is, it adds the value of the input to the local storage.       
- * @param {Event} event - the event that is passed in.       
- * @returns None       
- */
-function clickPress(event) {
-    if (event.key == "Enter") {
-        if(localStorage.getItem('searches') == null) {
-            localStorage.setItem('searches', JSON.stringify([uv_bar.value, ""]));
-        } else {
-            var tmp = JSON.parse(localStorage.getItem('searches'));
-            tmp.push(uv_bar.value);
-            localStorage.setItem('searches', JSON.stringify(tmp));
-            // alert(tmp);
+    /**
+     * Takes in an event and checks if the key pressed is enter.       
+     * If it is, it adds the value of the input to the local storage.       
+     * @param {Event} event - the event that is passed in.       
+     * @returns None       
+     */
+    function clickPress(event) {
+        if (event.key == "Enter") {
+            if (localStorage.getItem('searches') == null) {
+                localStorage.setItem('searches', JSON.stringify([uv_bar.value, ""]));
+            } else {
+                var tmp = JSON.parse(localStorage.getItem('searches'));
+                tmp.push(uv_bar.value);
+                localStorage.setItem('searches', JSON.stringify(tmp));
+                // alert(tmp);
+            }
         }
     }
-}
 
-function load_site(url) {
-    makeloader()
-    window.navigator.serviceWorker.register('./sw.js', {
-        scope: __uv$config.prefix
-    }).then(() => {
-        if (!isUrl(url)) url = 'https://duckduckgo.com/?q=' + url;
-        else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
-        load(url)
-    });
-}
-
-/**
- * Handles the input of the search bar.           
- * @returns None           
- */
-uv_bar.oninput = function() {
-    var tmp_ = JSON.parse(localStorage.getItem('searches'));
-    if(tmp_.filter(fil)[0] != undefined)
-    {
-        document.getElementById("1_").innerText = tmp_.filter(fil)[0];
-        document.getElementById("1_").addEventListener("click", () => {load_site(tmp_.filter(fil)[0])});
-    }
-    else{
-        document.getElementById("3_").onclick = '';
-        document.getElementById("1_").innerText = '';
-    }
-    if(tmp_.filter(fil)[1] != undefined){
-        document.getElementById("2_").innerText = tmp_.filter(fil)[1];
-        document.getElementById("1_").addEventListener("click", () => {load_site(tmp_.filter(fil)[1])})
-    }
-    else {
-        document.getElementById("3_").onclick = '';
-        document.getElementById("2_").innerText = '';
-    }
-    if(tmp_.filter(fil)[2] != undefined) {
-        document.getElementById("3_").innerText = tmp_.filter(fil)[2];
-        document.getElementById("1_").addEventListener("click", () => {load_site(tmp_.filter(fil)[2])});
-    }
-    else {
-        document.getElementById("3_").onclick = '';
-        document.getElementById("3_").innerText = '';
+    function load_site(url) {
+        makeloader()
+        window.navigator.serviceWorker.register('./sw.js', {
+            scope: __uv$config.prefix
+        }).then(() => {
+            if (!isUrl(url)) url = 'https://duckduckgo.com/?q=' + url;
+            else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
+            load(url)
+        });
     }
 
-    if(uv_bar.value != "") {
-        search_dropdown.style.height = "200px";
-        search_dropdown.style.padding = "12px 15px";
-        search_dropdown.style.visibility = "visible";
-        uv_bar.style.borderRadius = "5px 5px 0px 0px";
-    } else {
-        search_dropdown.style.height = "0px";
-        search_dropdown.style.padding = "0px 15px";
-        search_dropdown.style.visibility = "hidden";
-        setTimeout(function () {
-            uv_bar.style.borderRadius = "5px 5px 5px 5px";
-    }, 400)
-}
-// for(var i = 0; i < localStorage.getItem("prev_searches"); i++) {
-//     image_buttons[i].style.display = "inline";
-//     if(!(image_buttons[i].innerHTML.toLowerCase().replace(/\s+/g, '').includes(search_bar.value.toLowerCase().replace(/\s+/g, ''))) && search_bar.value != '') {
-//         //alert(image_buttons[i].style.display);
-//         image_buttons[i].style.display = "none";
-//     }
-// }
-} 
+    /**
+     * Handles the input of the search bar.           
+     * @returns None           
+     */
+    uv_bar.oninput = function () {
+        var tmp_ = JSON.parse(localStorage.getItem('searches'));
+        if (tmp_.filter(fil)[0] != undefined) {
+            document.getElementById("1_").innerText = tmp_.filter(fil)[0];
+            document.getElementById("1_").addEventListener("click", () => { load_site(tmp_.filter(fil)[0]) });
+        }
+        else {
+            document.getElementById("3_").onclick = '';
+            document.getElementById("1_").innerText = '';
+        }
+        if (tmp_.filter(fil)[1] != undefined) {
+            document.getElementById("2_").innerText = tmp_.filter(fil)[1];
+            document.getElementById("1_").addEventListener("click", () => { load_site(tmp_.filter(fil)[1]) })
+        }
+        else {
+            document.getElementById("3_").onclick = '';
+            document.getElementById("2_").innerText = '';
+        }
+        if (tmp_.filter(fil)[2] != undefined) {
+            document.getElementById("3_").innerText = tmp_.filter(fil)[2];
+            document.getElementById("1_").addEventListener("click", () => { load_site(tmp_.filter(fil)[2]) });
+        }
+        else {
+            document.getElementById("3_").onclick = '';
+            document.getElementById("3_").innerText = '';
+        }
+
+        if (uv_bar.value != "") {
+            search_dropdown.style.height = "200px";
+            search_dropdown.style.padding = "12px 15px";
+            search_dropdown.style.visibility = "visible";
+            uv_bar.style.borderRadius = "5px 5px 0px 0px";
+        } else {
+            search_dropdown.style.height = "0px";
+            search_dropdown.style.padding = "0px 15px";
+            search_dropdown.style.visibility = "hidden";
+            setTimeout(function () {
+                uv_bar.style.borderRadius = "5px 5px 5px 5px";
+            }, 400)
+        }
+        // for(var i = 0; i < localStorage.getItem("prev_searches"); i++) {
+        //     image_buttons[i].style.display = "inline";
+        //     if(!(image_buttons[i].innerHTML.toLowerCase().replace(/\s+/g, '').includes(search_bar.value.toLowerCase().replace(/\s+/g, ''))) && search_bar.value != '') {
+        //         //alert(image_buttons[i].style.display);
+        //         image_buttons[i].style.display = "none";
+        //     }
+        // }
+    }
 }
 catch {
 

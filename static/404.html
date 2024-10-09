@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>404 Not Found</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="home.css" />
+    <style>
+        /* Add styles specific to the 404 page */
+        .not-found {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .not-found h2 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .not-found p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .not-found button {
+            background-color: #1a1a1a;
+            color: #e5e5e5;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 0.6rem;
+            font-size: 1.2rem;
+            margin: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .not-found button:hover {
+            background-color: #333;
+        }
+
+        /* Ensure the footer styling matches the rest of the site */
+        footer {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            padding: 5rem 2vw;
+            background: #0000003d;
+            color: #e5e5e5;
+            opacity: 1;
+        }
+
+        .col {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 1.2rem 3.2rem;
+            width: 28%;
+        }
+
+        .col2 {
+            background-color: #26252b;
+            border-radius: 2.0rem;
+        }
+
+        img {
+            height: 1.2rem;
+            object-fit: cover;
+        }
+
+        .social {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            gap: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .link {
+            width: 3.2rem;
+            height: 3.2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 0.4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+
+        .link:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Science Help Beta</h1>
+        <button class="cta-button">Get Started</button>
+    </header>
+
+    <div class="not-found">
+        <h2>404</h2>
+        <p>Oops! The page you're looking for doesn't exist.</p>
+        <button onclick="window.location.href='/'">Go to Home</button>
+    </div>
+
+    <footer id="footer">
+        <div class="col col1">
+            <h3>Science Help Beta</h3>
+            <p>Made with
+                <span style="color: #BA6573;">❤</span>
+                by HoosierTransfer</p>
+            <div class="social">
+                <a href="https://github.com/HoosierTransfer" target="_blank" class="link"><img src="github.png" alt="GitHub" /></a>
+                <a href="https://www.reddit.com/user/zinc_sulfate/" target="_blank" class="link"><img src="reddit.png" alt="Reddit" /></a>
+                <a href="https://www.youtube.com/@HoosierTransfer" target="_blank" class="link"><img src="youtube.png" alt="YouTube" /></a>
+            </div>
+            <p style="color: #818181; font-size: smaller">2024 © All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+
+</html>
