@@ -52,20 +52,6 @@ try {
     }
 
     function load_site(url) {
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                for (let registration of registrations) {
-                    registration.unregister().then(function(boolean) {
-                        // If boolean is true, the service worker was unregistered successfully.
-                        // console.log('Service worker unregistered:', boolean);
-                        alert("33242");
-                    });
-                }
-            }).catch(function(error) {
-                console.error('Service worker unregistration failed:', error);
-            });
-        }
-        
         makeloader()
         window.navigator.serviceWorker.register('./sw.js', {
             scope: __uv$config.prefix
