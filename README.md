@@ -3,6 +3,7 @@
 
 Unblocker I made for school. Has authentication with keys so admins cant access it.
 
+The code for this is absolute shit btw.
 
 ## Run Locally
 
