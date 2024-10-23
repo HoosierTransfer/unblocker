@@ -1,5 +1,56 @@
+let allLogs = [];
+const logStyles = { log: 'white', error: 'red', warn: 'yellow', debug: 'gray' };
 
-// localStorage.clear();
+['log', 'error', 'warn', 'debug'].forEach(type => {
+    const original = console[type].bind(console);
+    console[type] = (...args) => {
+        original(...args);
+        allLogs.push(`<span style="color:${logStyles[type]}">${args.join(' ')}</span>`);
+    };
+});
+
+window.onerror = (e, url, line) => allLogs.push(`<span style="color:red;">Error: ${e} at ${url}, line ${line}</span>`);
+
+let consoleInterval;
+
+let consoleDiv;
+
+function addConsole() {    
+    consoleDiv = Object.assign(document.body.appendChild(document.createElement('div')), {
+    style: `position:fixed;z-index:100000;margin:10px;padding:10px;font-family:monospace;
+    width:500px;height:200px;color:white;background:black;border-radius:10px;border:white 2px solid;
+    overflow-y:auto;box-sizing:border-box;`
+    });
+    
+    consoleInterval = setInterval(() => consoleDiv.innerHTML = allLogs.join('<br>'), 100);
+
+    let settings = JSON.parse(localStorage.getItem("settings"));
+    settings.console = true;
+    localStorage.setItem("settings", JSON.stringify(settings));
+}
+
+function removeConsole() {
+    ['log', 'error', 'warn', 'debug'].forEach(type => {
+        console[type] = console[type].bind(console);
+    });
+    
+    window.onerror = null;
+    
+    clearInterval(consoleInterval);
+    consoleDiv.remove();
+
+    let settings = JSON.parse(localStorage.getItem("settings"));
+    settings.console = false;
+    localStorage.setItem("settings", JSON.stringify(settings));
+}
+
+if (localStorage.getItem("settings") != null) {
+    let settings = JSON.parse(localStorage.getItem("settings"));
+
+    if (settings.console) {
+        addConsole();
+    }
+}
 
 if (localStorage.getItem("settings") == null) {
     localStorage.setItem("settings", JSON.stringify({ light_theme: false, title: "Science Help", favicon: "" }))
@@ -78,6 +129,29 @@ function applySettings() {
     }
 }
 
+function unregisterServiceWorkers() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations()
+          .then(function(registrations) {
+            for (let registration of registrations) {
+              registration.unregister()
+                .then(function(success) {
+                  if (success) {
+                    console.log('Service worker unregistered successfully:', registration);
+                  } else {
+                    console.log('Service worker unregistration failed:', registration);
+                  }
+                });
+            }
+          })
+          .catch(function(error) {
+            console.log('Error getting service workers:', error);
+          });
+      } else {
+        console.log('Service workers are not supported in this browser.');
+      }
+}
+
 window.onload = () => {
     document.getElementById("title_input").oninput = function () {
         if (document.getElementById("title_input").value != '') {
@@ -100,6 +174,16 @@ window.onload = () => {
         alert()
         setSearchEngine(document.getElementById("search-engine-select").value);
     }
+
+    document.getElementById("checkbox_console").onchange = function () {
+        if (document.getElementById("checkbox_console").checked) {
+            addConsole();
+        } else {
+            removeConsole();
+        }
+    }
+
+    document.getElementById("checkbox_console").checked = JSON.parse(localStorage.getItem("settings")).console;
 
     applySettings();
 }

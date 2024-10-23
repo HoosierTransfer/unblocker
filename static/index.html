@@ -1,37 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW07DRC8QY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A platform to help you with science resources and tools.">
+  <title>Science Help</title>
 
-  gtag('config', 'G-KW07DRC8QY');
-</script>
+  <!-- Favicon -->
+  <link rel="icon" href="./img/icons/logo.ico" type="image/x-icon">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="./loader.css">
+
+  <!-- JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0"></script>
   <script type="module" src="auth.js"></script>
-  <title>Science Help</title>
-  <!-- Meta/Info Attributes -->
-  <link rel = "icon" href = "./img/icons/logo.ico" type = "image/x-icon">
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="./loader.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Boxicons CDN Link -->
-  <link href="./assets/css/all.css" rel="stylesheet">
-  <!-- Link to CSS Stylesheet -->
+
+  <!-- Custom Styles -->
+  <style>
+    /* Reset margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    /* Centered content with flexbox */
+    .background_content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #1e90ff, #00c6ff);
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    img.center {
+      display: block;
+      margin: 20px auto;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 1rem;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #iframe {
+      display: none;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: none;
+    }
+
+    /* Responsive behavior */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+      }
+    }
+  </style>
 </head>
-<div class="background_content">
-<p id="none">
-  <h1> Science Help </h1>
-  <img id="none" src="./img/icons/logo.png" class="center" width="300" height="300">
-</p>
-<div id="none" >
-  <body>
-  <!-- <button style="width:220px;height: 70px;" type="button" onclick="openInUnblocked('https://' + window.location.hostname + '/education.html'); window.location.replace('https://google.com/');">History Cloaker</button> -->
-  <button style="width:240px;height: 70px;" type="button" onclick="MyWindow1(); window.location.replace('https://google.com/');">Launch Science Help</button>
-  <!-- <button style="width:100px;height: 50px;" type="button" onclick="iframe()">Iframe</button> -->
+
+<body>
+  <div class="background_content">
+    <h1>Science Help</h1>
+    <img src="./img/icons/logo.png" alt="Science Help Logo" class="center" width="300" height="300">
+
+    <div>
+      <button type="button" onclick="MyWindow1(); window.location.replace('https://google.com/');">Launch Science Help</button>
+      <button type="button" onclick="iframe()">Iframe</button>
+    </div>
   </div>
-  <iframe id="iframe" src="menu.html" frameborder="0" style="display: none;overflow:hidden;overflow-x:hidden;overflow-y:hidden;height:100%;width:100%;position:absolute;top:0%;left:0px;right:0px;bottom:0px" height="100%" width="100%"></iframe>
-<script src="./scripts/index.js"></script>
-<script src="./scripts/settings.js"></script>
-<script src="./nohist/index.js"></script>
+
+  <iframe id="iframe" src="menu.html"></iframe>
+
+  <!-- External Scripts -->
+  <script src="./scripts/index.js"></script>
+  <script src="./scripts/settings.js"></script>
+  <script src="./nohist/index.js"></script>
+</body>
+</html>

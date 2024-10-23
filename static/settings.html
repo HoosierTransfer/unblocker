@@ -44,8 +44,14 @@
             <div>
                 <button class="setting-button" onclick="toggleTheme(true);" id="themeToggle">Light Mode</button>
                 <br>
+                <button class="setting-button" onclick="unregisterServiceWorkers();">Unregister Service Workers</button>
+                <br>
                 <input type="text" placeholder="Page Title" id="title_input">
                 <input type="text" placeholder="Page Icon" id="icon_input">
+                <br>
+                <label for="checkbox_console" id="checkbox_console_label">Show Console</label>
+                <input type="checkbox" id="checkbox_console">
+
                 <div class="custom-select">
                     <select id="search-engine-select">
                         <option>DuckDuckGo</option>

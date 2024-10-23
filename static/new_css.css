@@ -8,8 +8,10 @@
   --sidebarcolor2: #D8DEE9;
   --sidebarcolor75: #2E3440bf;
   --textcolor: #F5F5F5;
-  --navbar-button: #3D3B52; /* Removed transparency for more contrast */
-  --navbar-button-hover: #57546B; /* Removed transparency for more contrast */
+  --navbar-button: #3D3B52;
+  /* Removed transparency for more contrast */
+  --navbar-button-hover: #57546B;
+  /* Removed transparency for more contrast */
   --navbar-background: #2D2D33CC;
   --navbar-vertical-break: #5E5C64;
   --button-color: #2ECC71;
@@ -34,6 +36,7 @@
 body {
   overflow-x: hidden;
   background-color: var(--background);
+  color: var(--textcolor);
 }
 
 h1 {
@@ -360,18 +363,25 @@ i {
 }
 
 button:not(.inv) {
-  background-color: var(--button-color); /* Ensure this is a visible color */
-  color: var(--textcolor); /* Ensure this contrasts well with the button color */
+  background-color: var(--button-color);
+  /* Ensure this is a visible color */
+  color: var(--textcolor);
+  /* Ensure this contrasts well with the button color */
   font-size: 14px;
   font-weight: 500;
-  padding: 14px 20px; /* Adjusted padding for better spacing */
-  margin: 5px 5px; /* Removed margin-left and margin-right for consistency */
-  border: none; /* Remove outline */
+  padding: 14px 20px;
+  /* Adjusted padding for better spacing */
+  margin: 5px 5px;
+  /* Removed margin-left and margin-right for consistency */
+  border: none;
+  /* Remove outline */
   border-radius: 10px;
   display: inline-block;
-  transition: transform 0.2s ease, background-color 0.2s ease; /* Smooth transition */
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  /* Smooth transition */
   z-index: 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: adds depth to the button */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Optional: adds depth to the button */
 }
 
 /* Remove outline on focus */
@@ -386,7 +396,8 @@ button:not(.inv):hover {
 
 button:not(.inv):active {
   transform: scale(0.95);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Reduce shadow on click for effect */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  /* Reduce shadow on click for effect */
 }
 
 
@@ -646,7 +657,8 @@ input {
   border-radius: 10px;
   transition: 0.2s ease;
   color: var(--textcolor);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px; /* Added shadow for depth */
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px;
+  /* Added shadow for depth */
   text-align: center;
   line-height: 60px;
 }
@@ -665,4 +677,8 @@ input {
   width: 6px;
   border-radius: 10px;
   background: var(--navbar-vertical-break);
+}
+
+#checkbox_console_label {
+  font-weight: bold;
 }
