@@ -77,10 +77,18 @@ function toggleTheme(set) {
     }
     if (JSON.parse(localStorage.getItem("settings")).light_theme) {
         document.getElementsByTagName("html")[0].setAttribute('data-theme', 'light');
-        document.getElementById("themeToggle").innerText = "Dark Mode";
+        try {
+            document.getElementById("themeToggle").innerText = "Dark Mode";
+        } catch (e) {
+            
+        }
     } else {
         document.getElementsByTagName("html")[0].setAttribute('data-theme', 'default');
-        document.getElementById("themeToggle").innerText = "Light Mode";
+        try {
+            document.getElementById("themeToggle").innerText = "Light Mode";
+        } catch (e) {
+            
+        }
     }
 }
 
@@ -123,10 +131,6 @@ function applySettings() {
         setFavicon.setAttribute('href', settings.favicon);
         headTitle.appendChild(setFavicon);
     }
-
-    if (settings.search_engine != undefined) {
-        document.getElementById("search-engine-select").value = settings.search_engine;
-    }
 }
 
 function unregisterServiceWorkers() {
@@ -153,37 +157,5 @@ function unregisterServiceWorkers() {
 }
 
 window.onload = () => {
-    document.getElementById("title_input").oninput = function () {
-        if (document.getElementById("title_input").value != '') {
-            setTitle(document.getElementById("title_input").value, true);
-        } else {
-            setTitle("Science Help", true);
-        }
-    }
-
-
-    document.getElementById("icon_input").oninput = function () {
-        if (document.getElementById("icon_input").value != '') {
-            setFavicon(document.getElementById("icon_input").value, true);
-        } else {
-            setFavicon('', true);
-        }
-    }
-
-    document.getElementById("search-engine-select").onchange = function () {
-        alert()
-        setSearchEngine(document.getElementById("search-engine-select").value);
-    }
-
-    document.getElementById("checkbox_console").onchange = function () {
-        if (document.getElementById("checkbox_console").checked) {
-            addConsole();
-        } else {
-            removeConsole();
-        }
-    }
-
-    document.getElementById("checkbox_console").checked = JSON.parse(localStorage.getItem("settings")).console;
-
     applySettings();
 }

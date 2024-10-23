@@ -3,12 +3,75 @@
 
 <head>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0"></script> -->
     <link href="./assets/css/all.css" rel="stylesheet">
 
     <link rel="stylesheet" href="./new_css.css">
     <title>Science Help</title>
     <script src="navbar.js"></script>
+
+    <script>
+        function unregisterServiceWorkers() {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations()
+                    .then(function (registrations) {
+                        for (let registration of registrations) {
+                            registration.unregister()
+                                .then(function (success) {
+                                    if (success) {
+                                        console.log('Service worker unregistered successfully:', registration);
+                                    } else {
+                                        console.log('Service worker unregistration failed:', registration);
+                                    }
+                                });
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log('Error getting service workers:', error);
+                    });
+            } else {
+                console.log('Service workers are not supported in this browser.');
+            }
+        }
+
+        window.onload = () => {
+            document.getElementById("title_input").oninput = function () {
+                if (document.getElementById("title_input").value != '') {
+                    setTitle(document.getElementById("title_input").value, true);
+                } else {
+                    setTitle("Science Help", true);
+                }
+            }
+
+
+            document.getElementById("icon_input").oninput = function () {
+                if (document.getElementById("icon_input").value != '') {
+                    setFavicon(document.getElementById("icon_input").value, true);
+                } else {
+                    setFavicon('', true);
+                }
+            }
+
+            document.getElementById("search-engine-select").onchange = function () {
+                alert()
+                setSearchEngine(document.getElementById("search-engine-select").value);
+            }
+
+            document.getElementById("checkbox_console").onchange = function () {
+                if (document.getElementById("checkbox_console").checked) {
+                    addConsole();
+                } else {
+                    removeConsole();
+                }
+            }
+
+            if (settings.search_engine != undefined) {
+                document.getElementById("search-engine-select").value = settings.search_engine;
+            }
+
+            document.getElementById("checkbox_console").checked = JSON.parse(localStorage.getItem("settings")).console;
+        }
+
+    </script>
 </head>
 
 <body>
@@ -72,7 +135,6 @@
         <script src="./uv/uv.config.js"></script>
         <script src="./scripts/index.js"></script>
         <script src="./new_index.js"></script>
-        <script src="./settings.js"></script>
 </body>
 
 </html>
