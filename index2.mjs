@@ -41,4 +41,15 @@ httpServer.on('listening', () => {
   );
 });
 
-httpServer.listen(9092, '127.0.0.1');
+httpsServer.on('listening', () => {
+  const address = httpsServer.address();
+
+  console.log('HTTPS Listening on:');
+  console.log(`\thttps://localhost:${address.port}`);
+  console.log(`\thttps://${hostname()}:${address.port}`);
+  console.log(
+    `\thttps://${address.family === 'IPv6' ? `[${address.address}]` : address.address}:${address.port}`
+  );
+});
+
+httpServer.listen(9092, '0.0.0.0');
